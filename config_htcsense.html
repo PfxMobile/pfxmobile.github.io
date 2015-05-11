@@ -3,9 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src='spectrum.js'></script>
+	<link rel='stylesheet' href='spectrum.css' />
     <title>Configuration</title>
   </head>
 
@@ -80,6 +82,25 @@
             </select>
           </div>
         </fieldset>
+        
+        <fieldset class="ui-grid-a">
+          <div class="ui-block-b">
+            <legend>Background: </legend>
+            <input type='text' id="colorpick1" />
+          </div>
+          <div class="ui-block-b">
+             <legend>Calendar Grid: </legend>
+            <input type='text' id="colorpick2" />
+          </div>
+           <div class="ui-block-b">
+             <legend>Calendar Text: </legend>
+            <input type='text' id="colorpick3" />
+          </div>
+          <div class="ui-block-b">
+             <legend>Month/Year: </legend>
+            <input type='text' id="colorpick4" />
+          </div>
+       </fieldset>
         
         <legend>Choose date Format:</legend>
         <select name="datefmt" id="datefmt">
@@ -175,8 +196,55 @@
 			datefmt == 'gers' || datefmt == 'fras' || datefmt == 'engs' || datefmt == 'usas' || datefmt == 'isos') {
           $('#datefmt').val(datefmt).selectmenu('refresh');
         }
+		
+		var ColorArray = [
+				["#000000","#000055","#0000AA","#0000FF","#005500","#005555","#0055AA","#0055FF"],
+				["#00AA00","#00AA55","#00AAAA","#00AAFF","#00FF00","#00FF55","#00FFAA","#00FFFF"],
+				["#550000","#550055","#5500AA","#5500FF","#555500","#555555","#5555AA","#5555FF"],
+				["#55AA00","#55AA55","#55AAAA","#55AAFF","#55FF00","#55FF55","#55FFAA","#55FFFF"],
+				["#AA0000","#AA0055","#AA00AA","#AA00FF","#AA5500","#AA5555","#AA55AA","#AA55FF"],
+				["#AAAA00","#AAAA55","#AAAAAA","#FFFFFF","#AAAAFF","#AAFF00","#AAFF55","#AAFFAA"],
+				["#AAFFFF","#FF0000","#FF0055","#FF00AA","#FF00FF","#FF5500","#FF5555","#FF55AA"],
+				["#FF55FF","#FFAA00","#FFAA55","#FFAAAA","#FFAAFF","#FFFF00","#FFFF55","#FFFFAA"]
+			];
+		
+		$("#colorpick1").spectrum({
+			preferredFormat: "hex",
+			showPaletteOnly: true,
+			showPalette:true,
+			hideAfterPaletteSelect:true,
+			color: "#000000",
+			palette: ColorArray
+		});		
+		
+		$("#colorpick2").spectrum({
+			preferredFormat: "hex",
+			showPaletteOnly: true,
+			showPalette:true,
+			hideAfterPaletteSelect:true,
+			color: "#000000",
+			palette: ColorArray
+		});		
+		
+		$("#colorpick3").spectrum({
+			preferredFormat: "hex",
+			showPaletteOnly: true,
+			showPalette:true,
+			hideAfterPaletteSelect:true,
+			color: "#000000",
+			palette: ColorArray
+		});		
+		
+		$("#colorpick4").spectrum({
+			preferredFormat: "hex",
+			showPaletteOnly: true,
+			showPalette:true,
+			hideAfterPaletteSelect:true,
+			color: "#000000",
+			palette: ColorArray
+		});		
       }
-
+	  
       function saveOptions() {
         var options = {
           'theme': $("input[name='theme']:checked").val(),
