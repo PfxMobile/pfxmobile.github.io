@@ -112,9 +112,9 @@
 							<legend>Update Frequency:</legend>
 							<select name="c_update" id="c_update" data-mini="true">
 								<option value="0">Disabled</option>
-								<option value="1">15 minutes</option>
-								<option value="2">30 minutes</option>
-								<option value="3" selected="selected">1 hour</option>
+								<option value="15">15 minutes</option>
+								<option value="30">30 minutes</option>
+								<option value="60" selected="selected">1 hour</option>
 							</select>
 						</div>
 					</fieldset>
@@ -299,34 +299,71 @@
 			</div>
 		</div>
 		<script>
-		  <!-- from http://snipplr.com/view/26662/get-url-parameters-with-jquery--improved/ -->
-		  $.urlParam = function(name){
-			var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
-			if (!results) { return 0; }
-			return results[1] || 0;
-		  }
+			<!-- from http://snipplr.com/view/26662/get-url-parameters-with-jquery--improved/ -->
+			$.urlParam = function(name) {
+				var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+				if (!results) 
+					return '';
+				return results[1] || '';
+			}
 
-		  function updateControls() {
-			var title = decodeURIComponent($.urlParam("title"));
-			var theme = decodeURIComponent($.urlParam("theme"));
-			var fsm = decodeURIComponent($.urlParam("fsm"));
-			var inv = decodeURIComponent($.urlParam("inv"));
-			var anim = decodeURIComponent($.urlParam("anim"));
-			var sep = decodeURIComponent($.urlParam("sep"));
-			var datefmt = decodeURIComponent($.urlParam("datefmt"));
-			var smart = decodeURIComponent($.urlParam("smart"));
-			var vibr = decodeURIComponent($.urlParam("vibr"));        
-			$('#pagetittle').find('.ui-btn-text').text(title+' Configuration');
-			
+			function updateControls() {
+				var title = decodeURIComponent($.urlParam("title"));
+				var ampm = decodeURIComponent($.urlParam("ampm"));
+				var smart = decodeURIComponent($.urlParam("smart"));
+				var firstwd = decodeURIComponent($.urlParam("firstwd"));
+				var grid = decodeURIComponent($.urlParam("grid"));
+				var invert = decodeURIComponent($.urlParam("invert"));
+				var showmy = decodeURIComponent($.urlParam("showmy"));
+				var preweeks = decodeURIComponent($.urlParam("preweeks"));
+				var weather = decodeURIComponent($.urlParam("weather"));
+				var weather_fc = decodeURIComponent($.urlParam("weather_fc"));
+				var units = decodeURIComponent($.urlParam("units"));
+				var update = decodeURIComponent($.urlParam("update"));
+				var cityid = decodeURIComponent($.urlParam("cityid"));
+				var col_bg = decodeURIComponent($.urlParam("col_bg"));
+				var col_calbg = decodeURIComponent($.urlParam("col_calbg"));
+				var col_calgr = decodeURIComponent($.urlParam("col_calgr"));
+				var col_caltx = decodeURIComponent($.urlParam("col_caltx"));
+				var col_calhl = decodeURIComponent($.urlParam("col_calhl"));
+				var col_calmy = decodeURIComponent($.urlParam("col_calmy"));
+				var vibr_all = decodeURIComponent($.urlParam("vibr_all"));
+				var quietf = decodeURIComponent($.urlParam("quietf"));
+				var quiett = decodeURIComponent($.urlParam("quiett"));
+				var vibr_hr = decodeURIComponent($.urlParam("vibr_hr"));
+				var vibr_bl = decodeURIComponent($.urlParam("vibr_bl"));
+				var vibr_bc = decodeURIComponent($.urlParam("vibr_bc"));
+				
+				$('#pagetittle').find('.ui-btn-text').text(title+' Configuration');
+
+				if (ampm)
+					$("#c_ampm").val(ampm).slider("refresh");
+				if (c_smart)
+					$("#smart").val(smart).slider("refresh");
+				if (firstwd)
+					$("#c_firstwd").val(firstwd).slider("refresh");
+				if (grid)
+					$("#c_grid").val(grid).slider("refresh");
+				if (invert)
+					$("#c_invert").val(invert).slider("refresh");
+				if (showmy)
+					$("#c_showmy").val(invert).slider("refresh");
+				if (preweeks)
+				{
+					$("input[name='c_preweeks'][value='"+preweeks+"']").attr("checked","checked").checkboxradio("refresh");
+					$("input[name='c_preweeks']").checkboxradio("refresh");
+				}
+/*			
+
 			$("#fsm").slider('disable');
 			if (theme == 'black') {
 			  $("#theme2").attr("checked",true).checkboxradio("refresh");
 			  $("#fsm").slider('enable');
 			}
-			/* else if (theme == 'white') {
+			else if (theme == 'white') {
 			  $("#theme3").attr("checked",true).checkboxradio("refresh");
 			  $("#fsm").slider('enable');
-			}*/
+			}
 			else {
 			  $("#theme1").attr("checked",true).checkboxradio("refresh");
 			  fsm = 'no';
@@ -343,34 +380,34 @@
 				$("#smart").slider('enable');
 			  }
 			}
-			
+
 			if (inv == 'yes' || inv == 'no') {
 			  $("#inv").val(inv).slider("refresh");
 			}
-			
+
 			if (anim== 'yes' || anim== 'no') {
 			  $("#anim").val(anim).slider("refresh");
 			}
-		   
+
 			if (sep != 'yes' && sep != 'no') {
 			  sep = 'no';
 			}
 			$("#sep").val(sep).slider("refresh");
-		   
+
 			if (smart == 'yes' || smart == 'no') {
 			  $("#smart").val(smart).slider("refresh");
 			}
-			
+
 			if (vibr != 'yes' && vibr != 'no') {
 			  vibr = 'no';
 			}
 			$("#vibr").val(vibr).slider("refresh");
-			
+
 			if (datefmt == 'ger' || datefmt == 'fra' || datefmt == 'eng' || datefmt == 'usa' || datefmt == 'iso' ||
 				datefmt == 'gers' || datefmt == 'fras' || datefmt == 'engs' || datefmt == 'usas' || datefmt == 'isos') {
 			  $('#datefmt').val(datefmt).selectmenu('refresh');
 			}
-			
+*/
 			//Configure color picks, use Pebble Color Table
 			var ColorArray = [
 					["#000000","#000055","#0000AA","#0000FF","#005500","#005555","#0055AA","#0055FF"],
@@ -382,7 +419,7 @@
 					["#AAFFFF","#FF0000","#FF0055","#FF00AA","#FF00FF","#FF5500","#FF5555","#FF55AA"],
 					["#FF55FF","#FFAA00","#FFAA55","#FFAAAA","#FFAAFF","#FFFF00","#FFFF55","#FFFFAA"]
 				];
-			
+
 			$("#c_col_bg").spectrum({
 				preferredFormat: "hex",
 				showPaletteOnly: true,
@@ -391,7 +428,7 @@
 				color: "#000000",
 				palette: ColorArray
 			});		
-			
+
 			$("#c_col_calbg").spectrum({
 				preferredFormat: "hex",
 				showPaletteOnly: true,
@@ -400,7 +437,7 @@
 				color: "#000055",
 				palette: ColorArray
 			});		
-			
+
 			$("#c_col_calgr").spectrum({
 				preferredFormat: "hex",
 				showPaletteOnly: true,
@@ -409,7 +446,7 @@
 				color: "#AAAAAA",
 				palette: ColorArray
 			});		
-			
+
 			$("#c_col_caltx").spectrum({
 				preferredFormat: "hex",
 				showPaletteOnly: true,
@@ -418,7 +455,7 @@
 				color: "#FFFFFF",
 				palette: ColorArray
 			});		
-			
+
 			$("#c_col_calhl").spectrum({
 				preferredFormat: "hex",
 				showPaletteOnly: true,
@@ -427,7 +464,7 @@
 				color: "#FFFFFF",
 				palette: ColorArray
 			});		
-			
+
 			$("#c_col_calmy").spectrum({
 				preferredFormat: "hex",
 				showPaletteOnly: true,
@@ -436,7 +473,7 @@
 				color: "#FFFFFF",
 				palette: ColorArray
 			});		
-		  }
+			}
 		  
 		  function saveOptions() {
 			var options = {
