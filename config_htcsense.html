@@ -1,345 +1,506 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<script src='spectrum.js'></script>
-	<link rel='stylesheet' href='spectrum.css' />
-    <title>Configuration</title>
-  </head>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src='spectrum.js'></script>
+		<link rel='stylesheet' href='spectrum.css' />
+		<title>Configuration</title>
+	</head>
 
-  <body>
-    <div data-role="page" id="page1">
-      <div data-role="navbar" data-iconpos="left">
-        <ul>
-          <li><a href="#" class="ui-btn-active" id="pagetittle" data-icon="gear">Configuration</a></li>
-        </ul>
-      </div>
-      <div data-role="content" style="margin:0 auto;margin-left:auto;margin-right:auto;align:center;text-align:center;">
+	<body>
+		<div data-role="page" id="page1">
+			<div data-role="navbar" data-iconpos="left">
+				<ul>
+					<li><a href="#" class="ui-btn-active" id="pagetittle" data-icon="gear">Configuration</a></li>
+				</ul>
+			</div>
+			<div data-role="content" style="margin:0 auto;margin-left:auto;margin-right:auto;align:center;text-align:center;">
+				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="false">
+					<h4>General</h4>
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a">
+							<legend>Clock Format:</legend>
+							<select name="c_ampm" id="c_ampm" data-background="" data-role="slider">
+								<option value="24h">24h</option>
+								<option value="12h">12h</option>
+							</select>
+						</div>
+						<div class="ui-block-b"> 
+							<legend>Smart Status:</legend>
+							<select name="c_smart" id="c_smart" data-background="" data-role="slider">
+								<option value="yes">Yes</option>
+								<option value="no">No</option>
+							</select>
+						</div>
+					</fieldset>
+				</div>
+				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="false">
+					<h4>Calendar</h4>
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a">
+							<legend>1st Weekday:</legend>
+							<select name="c_firstwd" id="c_firstwd" data-background="" data-role="slider">
+								<option value="mo">Mo</option>
+								<option value="so">So</option>
+							</select>
+						</div>
+						<div class="ui-block-b"> 
+							<legend>Show Weeks Grid:</legend>
+							<select name="c_grid" id="c_grid" data-background="" data-role="slider">
+								<option value="yes">Yes</option>
+								<option value="no">No</option>
+							</select>
+						</div>
+					</fieldset>
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a">
+							<legend>Invert current Day:</legend>
+							<select name="c_invert" id="c_invert" data-background="" data-role="slider">
+								<option value="yes">Yes</option>
+								<option value="no">No</option>
+							</select>
+						</div>
+						<div class="ui-block-b"> 
+							<legend>Show Month & Year:</legend>
+							<select name="c_showmy" id="c_showmy" data-background="" data-role="slider">
+								<option value="Yes">Yes</option>
+								<option value="No">No</option>
+							</select>
+						</div>
+					</fieldset>
+					<fieldset data-role="controlgroup" data-mini="true">
+						<legend>Weeks to Show:</legend>
+						<input type="radio" name="c_preweeks" id="c_preweeks1" value="1" checked="checked">
+						<label for="c_preweeks1">Previous, Current, Next</label>
+						<input type="radio" name="c_preweeks" id="c_preweeks2" value="2">
+						<label for="c_preweeks2">Two Previous, Current</label>
+						<input type="radio" name="c_preweeks" id="c_preweeks3" value="0">
+						<label for="c_preweeks3">Current, Two Next</label>
+					</fieldset>
+				</div>
+				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="false">
+					<h4>Weather</h4>
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a"> 
+							<legend>Show Weather:</legend>
+							<select name="c_weather" id="c_weather" data-background="" data-role="slider">
+								<option value="yes">Yes</option>
+								<option value="no">No</option>
+							</select>
+						</div>
+						<div class="ui-block-b"> 
+							<legend>Weather Forecast:</legend>
+							<select name="c_weather_fc" id="c_weather_fc" data-background="" data-role="slider">
+								<option value="yes">Yes</option>
+								<option value="no">No</option>
+							</select>
+						</div>
+					</fieldset>
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a"> 
+							<legend>Units:</legend>
+							<select name="c_units" id="c_units" data-background="" data-role="slider">
+								<option value="c">°C</option>
+								<option value="f">°F</option>
+							</select>
+						</div>
+						<div class="ui-block-b"> 
+							<legend>Update Frequency:</legend>
+							<select name="c_update" id="c_update" data-mini="true">
+								<option value="0">Disabled</option>
+								<option value="1">15 minutes</option>
+								<option value="2">30 minutes</option>
+								<option value="3" selected="selected">1 hour</option>
+							</select>
+						</div>
+					</fieldset>
+					<fieldset class="ui-grid-a">
+						<div class="ui-corner-all custom-corners" data-mini="true">
+							<div class="ui-bar ui-bar-a">
+								<h3>openweathermap.org city ID or zero for auto location</h3>
+							</div>
+							<div class="ui-body ui-body-a">
+								<input type="text" data-clear-btn="true" name="c_cityid" pattern="[0-9]*" id="c_cityid" value="0" data-mini="true">
+							</div>
+						</div>
+					</fieldset>
+				</div>
+				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="false">
+					<h4>Colors (Hint: long press)</h4>
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-b">
+							<legend>Background: </legend>
+							<input type='text' id="c_col_bg" />
+						</div>
+						<div class="ui-block-b">
+							<legend>Calendar BG: </legend>
+							<input type='text' id="c_col_calbg" />
+						</div>
+						<div class="ui-block-b">
+							<legend>Calendar Grid: </legend>
+							<input type='text' id="c_col_calgr" />
+						</div>
+						<div class="ui-block-b">
+							<legend>Calendar Text: </legend>
+							<input type='text' id="c_col_caltx" />
+						</div>
+						<div class="ui-block-b">
+							<legend>Calendar HL: </legend>
+							<input type='text' id="c_col_calhl" />
+						</div>
+						<div class="ui-block-b">
+							<legend>Month/Year: </legend>
+							<input type='text' id="c_col_calmy" />
+						</div>
+					</fieldset>
+ 				</div>
+				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="false">
+					<h4>Vibration</h4>
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a"> 
+							<legend>Enable Vibration:</legend>
+							<select name="c_vibr_all" id="c_vibr_all" data-background="" data-role="slider">
+								<option value="yes">Yes</option>
+								<option value="no">No</option>
+							</select>
+						</div>
+						<div class="ui-block-b"> 
+							<legend>Quite Time (from-to):</legend>
+							<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+								<select name="c_quietf" id="c_quietf">
+									<option value="0">00h</option>
+									<option value="1">01h</option>
+									<option value="2">02h</option>
+									<option value="3">03h</option>
+									<option value="4">04h</option>
+									<option value="5">05h</option>
+									<option value="6">06h</option>
+									<option value="7">07h</option>
+									<option value="8">08h</option>
+									<option value="9">09h</option>
+									<option value="10">10h</option>
+									<option value="11">11h</option>
+									<option value="12">12h</option>
+									<option value="13">13h</option>
+									<option value="14">14h</option>
+									<option value="15">15h</option>
+									<option value="16">16h</option>
+									<option value="17">17h</option>
+									<option value="18">18h</option>
+									<option value="19">19h</option>
+									<option value="20">20h</option>
+									<option value="21">21h</option>
+									<option value="22" selected="selected">22h</option>
+									<option value="23">23h</option>
+								</select>
+								<select name="c_quiett" id="c_quiett">
+									<option value="0">00h</option>
+									<option value="1">01h</option>
+									<option value="2">02h</option>
+									<option value="3">03h</option>
+									<option value="4">04h</option>
+									<option value="5">05h</option>
+									<option value="6">06h</option>
+									<option value="7" selected="selected">07h</option>
+									<option value="8">08h</option>
+									<option value="9">09h</option>
+									<option value="10">10h</option>
+									<option value="11">11h</option>
+									<option value="12">12h</option>
+									<option value="13">13h</option>
+									<option value="14">14h</option>
+									<option value="15">15h</option>
+									<option value="16">16h</option>
+									<option value="17">17h</option>
+									<option value="18">18h</option>
+									<option value="19">19h</option>
+									<option value="20">20h</option>
+									<option value="21">21h</option>
+									<option value="22">22h</option>
+									<option value="23">23h</option>
+								</select>
+							</fieldset>
+						</div>
+					</fieldset>
+					<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+						<legend>Hourly Vibration:</legend>
+						<input type="radio" name="c_vibr_hr" id="c_vibr_hr0" value="0" checked="checked">
+						<label for="c_vibr_hr0">off</label>
+						<input type="radio" name="c_vibr_hr" id="c_vibr_hr1" value="1">
+						<label for="c_vibr_hr1">1x</label>
+						<input type="radio" name="c_vibr_hr" id="c_vibr_hr2" value="2">
+						<label for="c_vibr_hr2">2x</label>
+						<input type="radio" name="c_vibr_hr" id="c_vibr_hr3" value="3">
+						<label for="c_vibr_hr3">3x</label>
+						<input type="radio" name="c_vibr_hr" id="c_vibr_hr4" value="4">
+						<label for="c_vibr_hr4">long</label>
+						<input type="radio" name="c_vibr_hr" id="c_vibr_hr5" value="5">
+						<label for="c_vibr_hr5">subtle</label>
+						<input type="radio" name="c_vibr_hr" id="c_vibr_hr6" value="6">
+						<label for="c_vibr_hr6">less subtle</label>
+						<input type="radio" name="c_vibr_hr" id="c_vibr_hr7" value="7">
+						<label for="c_vibr_hr7">not subtle</label>
+						<input type="radio" name="c_vibr_hr" id="c_vibr_hr8" value="8">
+						<label for="c_vibr_hr8">S-S-L-S-S</label>
+					</fieldset>
+					<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+						<legend>Disconnect Vibration:</legend>
+						<input type="radio" name="c_vibr_bl" id="c_vibr_bl0" value="0">
+						<label for="c_vibr_bl0">off</label>
+						<input type="radio" name="c_vibr_bl" id="c_vibr_bl1" value="1">
+						<label for="c_vibr_bl1">1x</label>
+						<input type="radio" name="c_vibr_bl" id="c_vibr_bl2" value="2">
+						<label for="c_vibr_bl2">2x</label>
+						<input type="radio" name="c_vibr_bl" id="c_vibr_bl3" value="3" checked="checked">
+						<label for="c_vibr_bl3">3x</label>
+						<input type="radio" name="c_vibr_bl" id="c_vibr_bl4" value="4">
+						<label for="c_vibr_bl4">long</label>
+						<input type="radio" name="c_vibr_bl" id="c_vibr_bl5" value="5">
+						<label for="c_vibr_bl5">subtle</label>
+						<input type="radio" name="c_vibr_bl" id="c_vibr_bl6" value="6">
+						<label for="c_vibr_bl6">less subtle</label>
+						<input type="radio" name="c_vibr_bl" id="c_vibr_bl7" value="7">
+						<label for="c_vibr_bl7">not subtle</label>
+						<input type="radio" name="c_vibr_bl" id="c_vibr_bl8" value="8">
+						<label for="c_vibr_bl8">S-S-L-S-S</label>
+					</fieldset>
+					<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+						<legend>Connect Vibration:</legend>
+						<input type="radio" name="c_vibr_bc" id="c_vibr_bc0" value="0" checked="checked">
+						<label for="c_vibr_bc0">off</label>
+						<input type="radio" name="c_vibr_bc" id="c_vibr_bc1" value="1">
+						<label for="c_vibr_bc1">1x</label>
+						<input type="radio" name="c_vibr_bc" id="c_vibr_bc2" value="2">
+						<label for="c_vibr_bc2">2x</label>
+						<input type="radio" name="c_vibr_bc" id="c_vibr_bc3" value="3">
+						<label for="c_vibr_bc3">3x</label>
+						<input type="radio" name="c_vibr_bc" id="c_vibr_bc4" value="4">
+						<label for="c_vibr_bc4">long</label>
+						<input type="radio" name="c_vibr_bc" id="c_vibr_bc5" value="5">
+						<label for="c_vibr_bc5">subtle</label>
+						<input type="radio" name="c_vibr_bc" id="c_vibr_bc6" value="6">
+						<label for="c_vibr_bc6">less subtle</label>
+						<input type="radio" name="c_vibr_bc" id="c_vibr_bc7" value="7">
+						<label for="c_vibr_bc7">not subtle</label>
+						<input type="radio" name="c_vibr_bc" id="c_vibr_bc8" value="8">
+						<label for="c_vibr_bc8">S-S-L-S-S</label>
+					</fieldset>
+ 				</div>
+				<div class="ui-body ui-body-c">
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a"><button type="submit" data-theme="b" id="b-cancel" data-icon="delete">Cancel</button></div>
+						<div class="ui-block-b"><button type="submit" data-theme="b"  style="background: green" id="b-submit" data-icon="check">Save</button></div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		<script>
+		  <!-- from http://snipplr.com/view/26662/get-url-parameters-with-jquery--improved/ -->
+		  $.urlParam = function(name){
+			var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+			if (!results) { return 0; }
+			return results[1] || 0;
+		  }
 
-        <fieldset data-role="controlgroup" data-type="horizontal">
-          <legend>Choose a Theme:</legend>
-             <input type="radio" name="theme" id="theme1" value="circle" />
-             <label for="theme1">Circle</label>
-  
-             <input type="radio" name="theme" id="theme2" value="black"  />
-             <label for="theme2">Black/White</label>
-  
-             <!-- input type="radio" name="theme" id="theme3" value="white"  />
-             <label for="theme3">White</label -->
-        </fieldset>
+		  function updateControls() {
+			var title = decodeURIComponent($.urlParam("title"));
+			var theme = decodeURIComponent($.urlParam("theme"));
+			var fsm = decodeURIComponent($.urlParam("fsm"));
+			var inv = decodeURIComponent($.urlParam("inv"));
+			var anim = decodeURIComponent($.urlParam("anim"));
+			var sep = decodeURIComponent($.urlParam("sep"));
+			var datefmt = decodeURIComponent($.urlParam("datefmt"));
+			var smart = decodeURIComponent($.urlParam("smart"));
+			var vibr = decodeURIComponent($.urlParam("vibr"));        
+			$('#pagetittle').find('.ui-btn-text').text(title+' Configuration');
+			
+			$("#fsm").slider('disable');
+			if (theme == 'black') {
+			  $("#theme2").attr("checked",true).checkboxradio("refresh");
+			  $("#fsm").slider('enable');
+			}
+			/* else if (theme == 'white') {
+			  $("#theme3").attr("checked",true).checkboxradio("refresh");
+			  $("#fsm").slider('enable');
+			}*/
+			else {
+			  $("#theme1").attr("checked",true).checkboxradio("refresh");
+			  fsm = 'no';
+			}
 
-        <fieldset class="ui-grid-a">
-          <div class="ui-block-a">
-            <legend>Fullscreen: </legend>
-            <select name="fsm" id="fsm" data-background="" data-role="slider">
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-          <div class="ui-block-b"> 
-            <legend>Inverter: </legend>
-            <select name="inv" id="inv" data-background="" data-role="slider">
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-        </fieldset>
-        
-        <fieldset class="ui-grid-a">
-          <div class="ui-block-a">
-            <legend>Start animation: </legend>
-            <select name="anim" id="anim" data-background="" data-role="slider">
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-          <div class="ui-block-b">
-            <legend>Separator line: </legend>
-            <select name="sep" id="sep" data-background="" data-role="slider">
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-        </fieldset>
-        
-        <fieldset class="ui-grid-a">
-          <div class="ui-block-a">
-            <legend>Smart Status: </legend>
-            <select name="smart" id="smart" data-background="" data-role="slider">
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-          <div class="ui-block-b">
-            <legend>Hourly vibrate: </legend>
-            <select name="vibr" id="vibr" data-background="" data-role="slider">
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-        </fieldset>
-        
-        <fieldset class="ui-grid-a">
-          <div class="ui-block-b">
-            <legend>Background: </legend>
-            <input type='text' id="colorpick1" />
-          </div>
-          <div class="ui-block-b">
-             <legend>Calendar Grid: </legend>
-            <input type='text' id="colorpick2" />
-          </div>
-           <div class="ui-block-b">
-             <legend>Calendar Text: </legend>
-            <input type='text' id="colorpick3" />
-          </div>
-          <div class="ui-block-b">
-             <legend>Month/Year: </legend>
-            <input type='text' id="colorpick4" />
-          </div>
-       </fieldset>
-        
-        <legend>Choose date Format:</legend>
-        <select name="datefmt" id="datefmt">
-          <option value="ger">dd.mm.yyyy</option>
-          <option value="fra">dd-mm-yyyy</option>
-          <option value="eng">dd/mm/yyyy</option>
-          <option value="usa">mm/dd/yyyy</option>
-          <option value="iso">yyyy-mm-dd</option>
-          <option value="gers">dd.mm.yy</option>
-          <option value="fras">dd-mm-yy</option>
-          <option value="engs">dd/mm/yy</option>
-          <option value="usas">mm/dd/yy</option>
-          <option value="isos">yy-mm-dd</option>
-        </select>
+			$("#sep").slider('disable');
+			$("#smart").slider('disable');
+			$('#datefmt').selectmenu('disable');
+			if (fsm != '') {
+			  $("#fsm").val(fsm).slider("refresh");
+			  if (fsm != 'yes') {
+				$('#datefmt').selectmenu('enable');
+				$("#sep").slider('enable');
+				$("#smart").slider('enable');
+			  }
+			}
+			
+			if (inv == 'yes' || inv == 'no') {
+			  $("#inv").val(inv).slider("refresh");
+			}
+			
+			if (anim== 'yes' || anim== 'no') {
+			  $("#anim").val(anim).slider("refresh");
+			}
+		   
+			if (sep != 'yes' && sep != 'no') {
+			  sep = 'no';
+			}
+			$("#sep").val(sep).slider("refresh");
+		   
+			if (smart == 'yes' || smart == 'no') {
+			  $("#smart").val(smart).slider("refresh");
+			}
+			
+			if (vibr != 'yes' && vibr != 'no') {
+			  vibr = 'no';
+			}
+			$("#vibr").val(vibr).slider("refresh");
+			
+			if (datefmt == 'ger' || datefmt == 'fra' || datefmt == 'eng' || datefmt == 'usa' || datefmt == 'iso' ||
+				datefmt == 'gers' || datefmt == 'fras' || datefmt == 'engs' || datefmt == 'usas' || datefmt == 'isos') {
+			  $('#datefmt').val(datefmt).selectmenu('refresh');
+			}
+			
+			//Configure color picks, use Pebble Color Table
+			var ColorArray = [
+					["#000000","#000055","#0000AA","#0000FF","#005500","#005555","#0055AA","#0055FF"],
+					["#00AA00","#00AA55","#00AAAA","#00AAFF","#00FF00","#00FF55","#00FFAA","#00FFFF"],
+					["#550000","#550055","#5500AA","#5500FF","#555500","#555555","#5555AA","#5555FF"],
+					["#55AA00","#55AA55","#55AAAA","#55AAFF","#55FF00","#55FF55","#55FFAA","#55FFFF"],
+					["#AA0000","#AA0055","#AA00AA","#AA00FF","#AA5500","#AA5555","#AA55AA","#AA55FF"],
+					["#AAAA00","#AAAA55","#AAAAAA","#FFFFFF","#AAAAFF","#AAFF00","#AAFF55","#AAFFAA"],
+					["#AAFFFF","#FF0000","#FF0055","#FF00AA","#FF00FF","#FF5500","#FF5555","#FF55AA"],
+					["#FF55FF","#FFAA00","#FFAA55","#FFAAAA","#FFAAFF","#FFFF00","#FFFF55","#FFFFAA"]
+				];
+			
+			$("#c_col_bg").spectrum({
+				preferredFormat: "hex",
+				showPaletteOnly: true,
+				showPalette:true,
+				hideAfterPaletteSelect:false,
+				color: "#000000",
+				palette: ColorArray
+			});		
+			
+			$("#c_col_calbg").spectrum({
+				preferredFormat: "hex",
+				showPaletteOnly: true,
+				showPalette:true,
+				hideAfterPaletteSelect:false,
+				color: "#000055",
+				palette: ColorArray
+			});		
+			
+			$("#c_col_calgr").spectrum({
+				preferredFormat: "hex",
+				showPaletteOnly: true,
+				showPalette:true,
+				hideAfterPaletteSelect:false,
+				color: "#AAAAAA",
+				palette: ColorArray
+			});		
+			
+			$("#c_col_caltx").spectrum({
+				preferredFormat: "hex",
+				showPaletteOnly: true,
+				showPalette:true,
+				hideAfterPaletteSelect:false,
+				color: "#FFFFFF",
+				palette: ColorArray
+			});		
+			
+			$("#c_col_calhl").spectrum({
+				preferredFormat: "hex",
+				showPaletteOnly: true,
+				showPalette:true,
+				hideAfterPaletteSelect:false,
+				color: "#FFFFFF",
+				palette: ColorArray
+			});		
+			
+			$("#c_col_calmy").spectrum({
+				preferredFormat: "hex",
+				showPaletteOnly: true,
+				showPalette:true,
+				hideAfterPaletteSelect:false,
+				color: "#FFFFFF",
+				palette: ColorArray
+			});		
+		  }
+		  
+		  function saveOptions() {
+			var options = {
+			  'theme': $("input[name='theme']:checked").val(),
+			  'fsm': $("#fsm").val(),
+			  'inv': $("#inv").val(),
+			  'anim': $('#anim').val(),
+			  'sep': $("#sep").val(),
+			  'datefmt': $('#datefmt').val(),
+			  'smart': $('#smart').val(),
+			  'vibr': $("#vibr").val(),
+		  }
+			return options;
+		  }
 
-        <div class="ui-body ui-body-c">
-          <fieldset class="ui-grid-a">
-            <div class="ui-block-a"><button type="submit" data-theme="b" id="b-cancel" data-icon="delete">Cancel</button></div>
-            <div class="ui-block-b"><button type="submit" data-theme="b"  style="background: green" id="b-submit" data-icon="check">Save</button></div>
-          </fieldset>
-        </div>
-      </div>
-    </div>
-    <script>
-      <!-- from http://snipplr.com/view/26662/get-url-parameters-with-jquery--improved/ -->
-      $.urlParam = function(name){
-        var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
-        if (!results) { return 0; }
-        return results[1] || 0;
-      }
+		  // Workaround to work with CloudPebble
+		  function getQueryParam(variable, default_) {
+			var query = location.search.substring(1);
+			var vars = query.split('&');
+			for (var i = 0; i < vars.length; i++) {
+			   var pair = vars[i].split('=');
+			   if (pair[0] == variable)
+				  return decodeURIComponent(pair[1]);
+			}
+			return default_ || false;
+		  }	  
+		  
+		  $().ready(function() {
+			$("#b-cancel").click(function() {
+			  console.log("Cancel");
+			  var return_to = getQueryParam('return_to', 'pebblejs://close#');
+			  document.location = return_to;
+			});
 
-      function updateControls() {
-        var title = decodeURIComponent($.urlParam("title"));
-        var theme = decodeURIComponent($.urlParam("theme"));
-        var fsm = decodeURIComponent($.urlParam("fsm"));
-        var inv = decodeURIComponent($.urlParam("inv"));
-        var anim = decodeURIComponent($.urlParam("anim"));
-        var sep = decodeURIComponent($.urlParam("sep"));
-        var datefmt = decodeURIComponent($.urlParam("datefmt"));
-        var smart = decodeURIComponent($.urlParam("smart"));
-        var vibr = decodeURIComponent($.urlParam("vibr"));        
-        $('#pagetittle').find('.ui-btn-text').text(title+' Configuration');
-        
-        $("#fsm").slider('disable');
-        if (theme == 'black') {
-          $("#theme2").attr("checked",true).checkboxradio("refresh");
-          $("#fsm").slider('enable');
-        }
-        /* else if (theme == 'white') {
-          $("#theme3").attr("checked",true).checkboxradio("refresh");
-          $("#fsm").slider('enable');
-        }*/
-        else {
-          $("#theme1").attr("checked",true).checkboxradio("refresh");
-          fsm = 'no';
-        }
+			$("#b-submit").click(function() {
+			  console.log("Submit");
+			  var return_to = getQueryParam('return_to', 'pebblejs://close#');
+			  var location = return_to + encodeURIComponent(JSON.stringify(saveOptions()));
+			  console.log(location);
+			  document.location = location;
+			});
+		  });
 
-        $("#sep").slider('disable');
-        $("#smart").slider('disable');
-        $('#datefmt').selectmenu('disable');
-        if (fsm != '') {
-          $("#fsm").val(fsm).slider("refresh");
-          if (fsm != 'yes') {
-            $('#datefmt').selectmenu('enable');
-            $("#sep").slider('enable');
-            $("#smart").slider('enable');
-          }
-        }
-        
-        if (inv == 'yes' || inv == 'no') {
-          $("#inv").val(inv).slider("refresh");
-        }
-        
-        if (anim== 'yes' || anim== 'no') {
-          $("#anim").val(anim).slider("refresh");
-        }
-       
-        if (sep != 'yes' && sep != 'no') {
-          sep = 'no';
-        }
-        $("#sep").val(sep).slider("refresh");
-       
-        if (smart == 'yes' || smart == 'no') {
-          $("#smart").val(smart).slider("refresh");
-        }
-        
-        if (vibr != 'yes' && vibr != 'no') {
-          vibr = 'no';
-        }
-        $("#vibr").val(vibr).slider("refresh");
-        
-        if (datefmt == 'ger' || datefmt == 'fra' || datefmt == 'eng' || datefmt == 'usa' || datefmt == 'iso' ||
-			datefmt == 'gers' || datefmt == 'fras' || datefmt == 'engs' || datefmt == 'usas' || datefmt == 'isos') {
-          $('#datefmt').val(datefmt).selectmenu('refresh');
-        }
-		
-		var ColorArray = [
-				["#000000","#000055","#0000AA","#0000FF","#005500","#005555","#0055AA","#0055FF"],
-				["#00AA00","#00AA55","#00AAAA","#00AAFF","#00FF00","#00FF55","#00FFAA","#00FFFF"],
-				["#550000","#550055","#5500AA","#5500FF","#555500","#555555","#5555AA","#5555FF"],
-				["#55AA00","#55AA55","#55AAAA","#55AAFF","#55FF00","#55FF55","#55FFAA","#55FFFF"],
-				["#AA0000","#AA0055","#AA00AA","#AA00FF","#AA5500","#AA5555","#AA55AA","#AA55FF"],
-				["#AAAA00","#AAAA55","#AAAAAA","#FFFFFF","#AAAAFF","#AAFF00","#AAFF55","#AAFFAA"],
-				["#AAFFFF","#FF0000","#FF0055","#FF00AA","#FF00FF","#FF5500","#FF5555","#FF55AA"],
-				["#FF55FF","#FFAA00","#FFAA55","#FFAAAA","#FFAAFF","#FFFF00","#FFFF55","#FFFFAA"]
-			];
-		
-		$("#colorpick1").spectrum({
-			preferredFormat: "hex",
-			showPaletteOnly: true,
-			showPalette:true,
-			hideAfterPaletteSelect:true,
-			color: "#000000",
-			palette: ColorArray
-		});		
-		
-		$("#colorpick2").spectrum({
-			preferredFormat: "hex",
-			showPaletteOnly: true,
-			showPalette:true,
-			hideAfterPaletteSelect:true,
-			color: "#000000",
-			palette: ColorArray
-		});		
-		
-		$("#colorpick3").spectrum({
-			preferredFormat: "hex",
-			showPaletteOnly: true,
-			showPalette:true,
-			hideAfterPaletteSelect:true,
-			color: "#000000",
-			palette: ColorArray
-		});		
-		
-		$("#colorpick4").spectrum({
-			preferredFormat: "hex",
-			showPaletteOnly: true,
-			showPalette:true,
-			hideAfterPaletteSelect:true,
-			color: "#000000",
-			palette: ColorArray
-		});		
-      }
-	  
-      function saveOptions() {
-        var options = {
-          'theme': $("input[name='theme']:checked").val(),
-          'fsm': $("#fsm").val(),
-          'inv': $("#inv").val(),
-          'anim': $('#anim').val(),
-          'sep': $("#sep").val(),
-          'datefmt': $('#datefmt').val(),
-          'smart': $('#smart').val(),
-          'vibr': $("#vibr").val(),
-      }
-        return options;
-      }
+		  $.fn.fix_radios = function() {
+			function focus() {
+			  if ( !this.checked ) return;
+				if ( !this.was_checked ) {
+				  $( this ).change();
+				}
+			}
 
-	  // Workaround to work with CloudPebble
-      function getQueryParam(variable, default_) {
-		var query = location.search.substring(1);
-		var vars = query.split('&');
-		for (var i = 0; i < vars.length; i++) {
-		   var pair = vars[i].split('=');
-		   if (pair[0] == variable)
-		      return decodeURIComponent(pair[1]);
-		}
-		return default_ || false;
-	  }	  
-	  
-      $().ready(function() {
-        $("#b-cancel").click(function() {
-          console.log("Cancel");
-		  var return_to = getQueryParam('return_to', 'pebblejs://close#');
-          document.location = return_to;
-        });
+			function change( e ) {
+			  if ( this.was_checked ) {
+				e.stopImmediatePropagation();
+				return;
+				  }
+			  $( "input[name=" + this.name + "]" ).each( function() {
+				this.was_checked = this.checked;
+			  } );
+			}
+			return this.focus( focus ).change( change );
+		  }
 
-        $("#b-submit").click(function() {
-          console.log("Submit");
-		  var return_to = getQueryParam('return_to', 'pebblejs://close#');
-          var location = return_to + encodeURIComponent(JSON.stringify(saveOptions()));
-          console.log(location);
-          document.location = location;
-        });
-      });
-
-      $.fn.fix_radios = function() {
-        function focus() {
-          if ( !this.checked ) return;
-            if ( !this.was_checked ) {
-              $( this ).change();
-            }
-        }
-
-        function change( e ) {
-          if ( this.was_checked ) {
-            e.stopImmediatePropagation();
-            return;
-              }
-          $( "input[name=" + this.name + "]" ).each( function() {
-            this.was_checked = this.checked;
-          } );
-        }
-        return this.focus( focus ).change( change );
-      }
-
-        $(function() {
-          $("input[type=radio]").fix_radios();
-          $("input[name='theme']").change(function(){
-            if ($("input[name='theme']:checked").val() == 'circle'){
-              $("#fsm").val('no').slider("refresh");
-              $("#fsm").slider('disable');
-              $("#inv").val('no').slider("refresh");
-              $("#inv").slider('disable');
-              $("#sep").val('no').slider("refresh");
-              $("#sep").slider('disable');
-              $('#datefmt').selectmenu('enable');
-              $("#smart").slider('enable');
-            } else { 
-              $("#fsm").slider('enable');
-              $("#inv").slider('enable');
-            }
-          });
-          $("#fsm").change(function() {
-            if ($("#fsm").val() == 'yes'){
-              $("#sep").val('no').slider("refresh");
-              $("#sep").slider('disable');
-              $('#datefmt').selectmenu('disable');
-              $("#smart").val('no').slider("refresh");
-              $("#smart").slider('disable');
-            } else {
-              $("#sep").slider('enable');
-              $('#datefmt').selectmenu('enable');
-              $("#smart").slider('enable');
-            }
-          });
-        });
-
-      $('#page1').bind('pageinit', updateControls);
-    </script>
-  </body>
+		  $('#page1').bind('pageinit', updateControls);
+		</script>
+	</body>
 </html>
