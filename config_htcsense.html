@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-		<script src='spectrum.js'></script>
+		<script src='spectrum.js'></script> <!-- http://bgrins.github.io/spectrum -->
 		<link rel='stylesheet' href='spectrum.css' />
 		<title>Configuration</title>
 	</head>
@@ -67,8 +67,8 @@
 						<div class="ui-block-b"> 
 							<legend>Show Month, Year:</legend>
 							<select name="c_showmy" id="c_showmy" data-background="" data-role="slider">
-								<option value="No">No</option>
-								<option value="Yes" selected="">Yes</option>
+								<option value="no">No</option>
+								<option value="yes" selected="">Yes</option>
 							</select>
 						</div>
 					</fieldset>
@@ -255,11 +255,11 @@
 						<label for="c_vibr_bl1">1x</label>
 						<input type="radio" name="c_vibr_bl" id="c_vibr_bl2" value="2">
 						<label for="c_vibr_bl2">2x</label>
-						<input type="radio" name="c_vibr_bl" id="c_vibr_bl3" value="3" checked="checked">
+						<input type="radio" name="c_vibr_bl" id="c_vibr_bl3" value="3">
 						<label for="c_vibr_bl3">3x</label>
 						<input type="radio" name="c_vibr_bl" id="c_vibr_bl4" value="4">
 						<label for="c_vibr_bl4">long</label>
-						<input type="radio" name="c_vibr_bl" id="c_vibr_bl5" value="5">
+						<input type="radio" name="c_vibr_bl" id="c_vibr_bl5" value="5" checked="checked">
 						<label for="c_vibr_bl5">subtle</label>
 						<input type="radio" name="c_vibr_bl" id="c_vibr_bl6" value="6">
 						<label for="c_vibr_bl6">less subtle</label>
@@ -338,8 +338,8 @@
 
 				if (ampm)
 					$("#c_ampm").val(ampm).slider("refresh");
-				if (c_smart)
-					$("#smart").val(smart).slider("refresh");
+				if (smart)
+					$("#c_smart").val(smart).slider("refresh");
 				if (firstwd)
 					$("#c_firstwd").val(firstwd).slider("refresh");
 				if (grid)
@@ -353,63 +353,40 @@
 					$("input[name='c_preweeks'][value='"+preweeks+"']").attr("checked","checked").checkboxradio("refresh");
 					$("input[name='c_preweeks']").checkboxradio("refresh");
 				}
-/*			
+				if (weather)
+					$("#c_weather").val(weather).slider("refresh");
+				if (weather_fc)
+					$("#c_weather_fc").val(weather_fc).slider("refresh");
+				if (units)
+					$("#c_units").val(units).slider("refresh");
+				if (update)
+					$('#c_update').val(update).selectmenu('refresh');
+				if (cityid)
+					$("#c_cityid").val(cityid).textinput('refresh');
+				if (vibr_all)
+					$("#c_vibr_all").val(vibr_all).slider("refresh");
+				if (quietf)
+					$('#c_quietf').val(quietf).selectmenu('refresh');
+				if (quiett)
+					$('#c_quiett').val(quiett).selectmenu('refresh');
+				if (vibr_hr)
+				{
+					$("input[name='c_vibr_hr'][value='"+vibr_hr+"']").attr("checked","checked").checkboxradio("refresh");
+					$("input[name='c_vibr_hr']").checkboxradio("refresh");
+				}
+				if (vibr_bl)
+				{
+					$("input[name='c_vibr_bl'][value='"+vibr_bl+"']").attr("checked","checked").checkboxradio("refresh");
+					$("input[name='c_vibr_bl']").checkboxradio("refresh");
+				}
+				if (vibr_bc)
+				{
+					$("input[name='c_vibr_bc'][value='"+vibr_bc+"']").attr("checked","checked").checkboxradio("refresh");
+					$("input[name='c_vibr_bc']").checkboxradio("refresh");
+				}
 
-			$("#fsm").slider('disable');
-			if (theme == 'black') {
-			  $("#theme2").attr("checked",true).checkboxradio("refresh");
-			  $("#fsm").slider('enable');
-			}
-			else if (theme == 'white') {
-			  $("#theme3").attr("checked",true).checkboxradio("refresh");
-			  $("#fsm").slider('enable');
-			}
-			else {
-			  $("#theme1").attr("checked",true).checkboxradio("refresh");
-			  fsm = 'no';
-			}
-
-			$("#sep").slider('disable');
-			$("#smart").slider('disable');
-			$('#datefmt').selectmenu('disable');
-			if (fsm != '') {
-			  $("#fsm").val(fsm).slider("refresh");
-			  if (fsm != 'yes') {
-				$('#datefmt').selectmenu('enable');
-				$("#sep").slider('enable');
-				$("#smart").slider('enable');
-			  }
-			}
-
-			if (inv == 'yes' || inv == 'no') {
-			  $("#inv").val(inv).slider("refresh");
-			}
-
-			if (anim== 'yes' || anim== 'no') {
-			  $("#anim").val(anim).slider("refresh");
-			}
-
-			if (sep != 'yes' && sep != 'no') {
-			  sep = 'no';
-			}
-			$("#sep").val(sep).slider("refresh");
-
-			if (smart == 'yes' || smart == 'no') {
-			  $("#smart").val(smart).slider("refresh");
-			}
-
-			if (vibr != 'yes' && vibr != 'no') {
-			  vibr = 'no';
-			}
-			$("#vibr").val(vibr).slider("refresh");
-
-			if (datefmt == 'ger' || datefmt == 'fra' || datefmt == 'eng' || datefmt == 'usa' || datefmt == 'iso' ||
-				datefmt == 'gers' || datefmt == 'fras' || datefmt == 'engs' || datefmt == 'usas' || datefmt == 'isos') {
-			  $('#datefmt').val(datefmt).selectmenu('refresh');
-			}
-*/
-			//Configure color picks, use Pebble Color Table
-			var ColorArray = [
+				//Configure color picks, use Pebble Color Table
+				var ColorArray = [
 					["#000000","#000055","#0000AA","#0000FF","#005500","#005555","#0055AA","#0055FF"],
 					["#00AA00","#00AA55","#00AAAA","#00AAFF","#00FF00","#00FF55","#00FFAA","#00FFFF"],
 					["#550000","#550055","#5500AA","#5500FF","#555500","#555555","#5555AA","#5555FF"],
@@ -420,124 +397,155 @@
 					["#FF55FF","#FFAA00","#FFAA55","#FFAAAA","#FFAAFF","#FFFF00","#FFFF55","#FFFFAA"]
 				];
 
-			$("#c_col_bg").spectrum({
-				preferredFormat: "hex",
-				showPaletteOnly: true,
-				showPalette:true,
-				hideAfterPaletteSelect:false,
-				color: "#000000",
-				palette: ColorArray
-			});		
+				if (!col_bg)
+					col_bg = '000000';
+				$("#c_col_bg").spectrum({
+					preferredFormat: "hex",
+					showPaletteOnly: true,
+					showPalette:true,
+					hideAfterPaletteSelect:false,
+					color: col_bg,
+					palette: ColorArray
+				});		
 
-			$("#c_col_calbg").spectrum({
-				preferredFormat: "hex",
-				showPaletteOnly: true,
-				showPalette:true,
-				hideAfterPaletteSelect:false,
-				color: "#000055",
-				palette: ColorArray
-			});		
+				if (!col_calbg)
+					col_calbg = '000055';
+				$("#c_col_calbg").spectrum({
+					preferredFormat: "hex",
+					showPaletteOnly: true,
+					showPalette:true,
+					hideAfterPaletteSelect:false,
+					color: col_calbg,
+					palette: ColorArray
+				});		
 
-			$("#c_col_calgr").spectrum({
-				preferredFormat: "hex",
-				showPaletteOnly: true,
-				showPalette:true,
-				hideAfterPaletteSelect:false,
-				color: "#AAAAAA",
-				palette: ColorArray
-			});		
+				if (!col_calgr)
+					col_calgr = 'AAAAAA';
+				$("#c_col_calgr").spectrum({
+					preferredFormat: "hex",
+					showPaletteOnly: true,
+					showPalette:true,
+					hideAfterPaletteSelect:false,
+					color: col_calgr,
+					palette: ColorArray
+				});		
 
-			$("#c_col_caltx").spectrum({
-				preferredFormat: "hex",
-				showPaletteOnly: true,
-				showPalette:true,
-				hideAfterPaletteSelect:false,
-				color: "#FFFFFF",
-				palette: ColorArray
-			});		
+				if (!col_caltx)
+					col_caltx = 'FFFFFF';
+				$("#c_col_caltx").spectrum({
+					preferredFormat: "hex",
+					showPaletteOnly: true,
+					showPalette:true,
+					hideAfterPaletteSelect:false,
+					color: col_caltx,
+					palette: ColorArray
+				});		
 
-			$("#c_col_calhl").spectrum({
-				preferredFormat: "hex",
-				showPaletteOnly: true,
-				showPalette:true,
-				hideAfterPaletteSelect:false,
-				color: "#FFFFFF",
-				palette: ColorArray
-			});		
+				if (!col_calhl)
+					col_calhl = 'FFFFFF';
+				$("#c_col_calhl").spectrum({
+					preferredFormat: "hex",
+					showPaletteOnly: true,
+					showPalette:true,
+					hideAfterPaletteSelect:false,
+					color: col_calhl,
+					palette: ColorArray
+				});		
 
-			$("#c_col_calmy").spectrum({
-				preferredFormat: "hex",
-				showPaletteOnly: true,
-				showPalette:true,
-				hideAfterPaletteSelect:false,
-				color: "#FFFFFF",
-				palette: ColorArray
-			});		
+				if (!col_calmy)
+					col_calmy = 'FFFFFF';
+				$("#c_col_calmy").spectrum({
+					preferredFormat: "hex",
+					showPaletteOnly: true,
+					showPalette:true,
+					hideAfterPaletteSelect:false,
+					color: col_calmy,
+					palette: ColorArray
+				});		
 			}
 		  
-		  function saveOptions() {
-			var options = {
-			  'theme': $("input[name='theme']:checked").val(),
-			  'fsm': $("#fsm").val(),
-			  'inv': $("#inv").val(),
-			  'anim': $('#anim').val(),
-			  'sep': $("#sep").val(),
-			  'datefmt': $('#datefmt').val(),
-			  'smart': $('#smart').val(),
-			  'vibr': $("#vibr").val(),
-		  }
-			return options;
-		  }
 
-		  // Workaround to work with CloudPebble
-		  function getQueryParam(variable, default_) {
-			var query = location.search.substring(1);
-			var vars = query.split('&');
-			for (var i = 0; i < vars.length; i++) {
-			   var pair = vars[i].split('=');
-			   if (pair[0] == variable)
-				  return decodeURIComponent(pair[1]);
-			}
-			return default_ || false;
-		  }	  
-		  
-		  $().ready(function() {
-			$("#b-cancel").click(function() {
-			  console.log("Cancel");
-			  var return_to = getQueryParam('return_to', 'pebblejs://close#');
-			  document.location = return_to;
-			});
-
-			$("#b-submit").click(function() {
-			  console.log("Submit");
-			  var return_to = getQueryParam('return_to', 'pebblejs://close#');
-			  var location = return_to + encodeURIComponent(JSON.stringify(saveOptions()));
-			  console.log(location);
-			  document.location = location;
-			});
-		  });
-
-		  $.fn.fix_radios = function() {
-			function focus() {
-			  if ( !this.checked ) return;
-				if ( !this.was_checked ) {
-				  $( this ).change();
+			function saveOptions() {
+				var options = {
+					'ampm': $("#c_ampm").val(),
+					'smart': $("#c_smart").val(),
+					'firstwd': $('#c_firstwd').val(),
+					'grid': $("#c_grid").val(),
+					'invert': $('#c_invert').val(),
+					'showmy': $('#c_showmy').val(),
+					'preweeks': $("input[name='c_preweeks']:checked").val(),
+					'weather': $("#c_weather").val(),
+					'weather_fc': $("#c_weather_fc").val(),
+					'units': $('#c_units').val(),
+					'update': $("#c_update").val(),
+					'cityid': $('#c_cityid').val(),
+					'col_bg': $("#c_col_bg").spectrum("get").toHex(),
+					'col_calbg': $("#c_col_calbg").spectrum("get").toHex(),
+					'col_calgr': $("#c_col_calgr").spectrum("get").toHex(),
+					'col_caltx': $("#c_col_caltx").spectrum("get").toHex(),
+					'col_calhl': $("#c_col_calhl").spectrum("get").toHex(),
+					'col_calmy': $("#c_col_calmy").spectrum("get").toHex(),
+					'vibr_all': $("#c_vibr_all").val(),
+					'quietf': $("#c_quietf").val(),
+					'quiett': $("#c_quiett").val(),
+					'vibr_hr': $("input[name='c_vibr_hr']:checked").val(),
+					'vibr_bl': $("input[name='c_vibr_bl']:checked").val(),
+					'vibr_bc': $("input[name='c_vibr_bc']:checked").val()
 				}
+				return options;
 			}
 
-			function change( e ) {
-			  if ( this.was_checked ) {
-				e.stopImmediatePropagation();
-				return;
-				  }
-			  $( "input[name=" + this.name + "]" ).each( function() {
-				this.was_checked = this.checked;
-			  } );
-			}
-			return this.focus( focus ).change( change );
-		  }
+			// Workaround to work with CloudPebble
+			function getQueryParam(variable, default_) {
+				var query = location.search.substring(1);
+				var vars = query.split('&');
+				for (var i = 0; i < vars.length; i++) {
+					var pair = vars[i].split('=');
+					if (pair[0] == variable)
+						return decodeURIComponent(pair[1]);
+				}
+				return default_ || false;
+			}	  
+		  
+			$().ready(function() {
+				$("#b-cancel").click(function() {
+					console.log("Cancel");
+					var return_to = getQueryParam('return_to', 'pebblejs://close#');
+					document.location = return_to;
+				});
 
-		  $('#page1').bind('pageinit', updateControls);
+				$("#b-submit").click(function() {
+					console.log("Submit");
+					var return_to = getQueryParam('return_to', 'pebblejs://close#');
+					var location = return_to + encodeURIComponent(JSON.stringify(saveOptions()));
+					console.log(location);
+					document.location = location;
+				});
+			});
+
+			$.fn.fix_radios = function() {
+				function focus() {
+					if ( !this.checked ) 
+						return;
+					if ( !this.was_checked ) {
+						$( this ).change();
+					}
+				};
+
+				function change( e ) {
+					if ( this.was_checked ) {
+						e.stopImmediatePropagation();
+						return;
+					}
+					$( "input[name=" + this.name + "]" ).each( function() {
+						this.was_checked = this.checked;
+					});
+				}
+			
+				return this.focus( focus ).change( change );
+			}
+
+			$('#page1').bind('pageinit', updateControls);
 		</script>
 	</body>
 </html>
