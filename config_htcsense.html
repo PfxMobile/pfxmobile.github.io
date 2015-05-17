@@ -6,18 +6,20 @@
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-		<script src='spectrum.js'></script> <!-- http://bgrins.github.io/spectrum -->
-		<link rel='stylesheet' href='spectrum.css' />
+		<script src='js/spectrum.min.js'></script> <!-- http://bgrins.github.io/spectrum -->
+		<link rel='stylesheet' href='css/spectrum.min.css' />
 		<title>Configuration</title>
 	</head>
 
 	<body>
-		<div data-role="page" id="page1">
-			<div data-role="navbar" data-iconpos="left">
-				<ul>
-					<li><a href="#" class="ui-btn-active" id="pagetittle" data-icon="gear">Configuration</a></li>
-				</ul>
-			</div>
+		<div data-role="page" name="page1" id="page1">
+			<div data-role="header" data-theme="a" data-position="fixed">
+				<div data-role="navbar"  name="navbar1" id="navbar1" data-iconpos="left">
+					<ul>
+						<li><a href="#" class="ui-btn-active" name="pagetittle" id="pagetittle" data-icon="gear">Configuration</a></li>
+					</ul>
+				</div>
+			</div>		
 			<div data-role="content" style="margin:0 auto;margin-left:auto;margin-right:auto;align:center;text-align:center;">
 				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="false">
 					<h4>General</h4>
@@ -290,11 +292,13 @@
 						<label for="c_vibr_bc8">S-S-L-S-S</label>
 					</fieldset>
  				</div>
-				<div class="ui-body ui-body-c">
-					<fieldset class="ui-grid-a">
-						<div class="ui-block-a"><button type="submit" data-theme="b" id="b-cancel" data-icon="delete">Cancel</button></div>
-						<div class="ui-block-b"><button type="submit" data-theme="b"  style="background: green" id="b-submit" data-icon="check">Save</button></div>
-					</fieldset>
+				<div data-role="footer" data-theme="a" data-position="fixed" style="background: #3388cc">
+					<div data-role="navbar" data-mini="false" data-iconpos="left">
+						<ul>
+							<li><button type="submit" data-theme="b" id="b-cancel" data-icon="delete">Cancel</button></li>
+							<li><button type="submit" data-theme="b"  style="background: green" id="b-submit" data-icon="check">Save</button></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -347,7 +351,7 @@
 				if (invert)
 					$("#c_invert").val(invert).slider("refresh");
 				if (showmy)
-					$("#c_showmy").val(invert).slider("refresh");
+					$("#c_showmy").val(showmy).slider("refresh");
 				if (preweeks)
 				{
 					$("input[name='c_preweeks'][value='"+preweeks+"']").attr("checked","checked").checkboxradio("refresh");
