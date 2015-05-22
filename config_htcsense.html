@@ -95,8 +95,24 @@
 							</select>
 						</div>
 						<div class="ui-block-b"> 
+							<legend>Units:</legend>
+							<select name="c_units" id="c_units" data-background="" data-role="slider">
+								<option value="f">°F</option>
+								<option value="c" selected="">°C</option>
+							</select>
+						</div>
+					</fieldset>
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a"> 
 							<legend>Weather Forecast:</legend>
 							<select name="c_weather_fc" id="c_weather_fc" data-background="" data-role="slider">
+								<option value="0">No</option>
+								<option value="1" selected="">Yes</option>
+							</select>
+						</div>
+						<div class="ui-block-b"> 
+							<legend>Auto slide out</legend>
+							<select name="c_weather_aso" id="c_weather_aso" data-background="" data-role="slider">
 								<option value="0">No</option>
 								<option value="1" selected="">Yes</option>
 							</select>
@@ -104,13 +120,6 @@
 					</fieldset>
 					<fieldset class="ui-grid-a">
 						<div class="ui-block-a"> 
-							<legend>Units:</legend>
-							<select name="c_units" id="c_units" data-background="" data-role="slider">
-								<option value="f">°F</option>
-								<option value="c" selected="">°C</option>
-							</select>
-						</div>
-						<div class="ui-block-b"> 
 							<legend>Update Frequency:</legend>
 							<select name="c_update" id="c_update" data-mini="true">
 								<option value="0">Disabled</option>
@@ -118,6 +127,8 @@
 								<option value="30">30 minutes</option>
 								<option value="60" selected="selected">1 hour</option>
 							</select>
+						</div>
+						<div class="ui-block-b"> 
 						</div>
 					</fieldset>
 					<fieldset class="ui-grid-a">
@@ -321,8 +332,9 @@
 				var showmy = decodeURIComponent($.urlParam("showmy"));
 				var preweeks = decodeURIComponent($.urlParam("preweeks"));
 				var weather = decodeURIComponent($.urlParam("weather"));
-				var weather_fc = decodeURIComponent($.urlParam("weather_fc"));
 				var units = decodeURIComponent($.urlParam("units"));
+				var weather_fc = decodeURIComponent($.urlParam("weather_fc"));
+				var weather_aso = decodeURIComponent($.urlParam("weather_aso"));
 				var update = decodeURIComponent($.urlParam("update"));
 				var cityid = decodeURIComponent($.urlParam("cityid"));
 				var col_bg = decodeURIComponent($.urlParam("col_bg"));
@@ -359,10 +371,12 @@
 				}
 				if (weather)
 					$("#c_weather").val(weather).slider("refresh");
-				if (weather_fc)
-					$("#c_weather_fc").val(weather_fc).slider("refresh");
 				if (units)
 					$("#c_units").val(units).slider("refresh");
+				if (weather_fc)
+					$("#c_weather_fc").val(weather_fc).slider("refresh");
+				if (weather_aso)
+					$("#c_weather_aso").val(weather_aso).slider("refresh");
 				if (update)
 					$('#c_update').val(update).selectmenu('refresh');
 				if (cityid)
@@ -479,8 +493,9 @@
 					'showmy': $('#c_showmy').val(),
 					'preweeks': $("input[name='c_preweeks']:checked").val(),
 					'weather': $("#c_weather").val(),
-					'weather_fc': $("#c_weather_fc").val(),
 					'units': $('#c_units').val(),
+					'weather_fc': $("#c_weather_fc").val(),
+					'weather_aso': $("#c_weather_aso").val(),
 					'update': $("#c_update").val(),
 					'cityid': $('#c_cityid').val(),
 					'col_bg': $("#c_col_bg").spectrum("get").toHex(),
