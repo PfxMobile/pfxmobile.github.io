@@ -303,6 +303,20 @@
 						<label for="c_vibr_bc8">S-S-L-S-S</label>
 					</fieldset>
  				</div>
+				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="true">
+					<h4>Miscellaneous</h4>
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a"> 
+							<legend>Enable Debug Mode:</legend>
+							<select name="c_debug" id="c_debug" data-background="" data-role="slider">
+								<option value="0" selected="">No</option>
+								<option value="1">Yes</option>
+							</select>
+						</div>
+						<div class="ui-block-b"> 
+						</div>
+					</fieldset>
+ 				</div>
 				<div data-role="footer" data-theme="a" data-position="fixed" style="background: #3388cc">
 					<div data-role="navbar" data-mini="false" data-iconpos="left">
 						<ul>
@@ -349,6 +363,7 @@
 				var vibr_hr = decodeURIComponent($.urlParam("vibr_hr"));
 				var vibr_bl = decodeURIComponent($.urlParam("vibr_bl"));
 				var vibr_bc = decodeURIComponent($.urlParam("vibr_bc"));
+				var debug = decodeURIComponent($.urlParam("debug"));
 				
 				$('#pagetittle').find('.ui-btn-text').text(title+' Configuration');
 
@@ -402,6 +417,8 @@
 					$("input[name='c_vibr_bc'][value='"+vibr_bc+"']").attr("checked","checked").checkboxradio("refresh");
 					$("input[name='c_vibr_bc']").checkboxradio("refresh");
 				}
+				if (debug)
+					$("#c_debug").val(debug).slider("refresh");
 
 				//Configure color picks, use Pebble Color Table
 				var ColorArray = [
@@ -482,7 +499,6 @@
 				});		
 			}
 		  
-
 			function saveOptions() {
 				var options = {
 					'ampm': $("#c_ampm").val(),
@@ -509,7 +525,8 @@
 					'quiett': $("#c_quiett").val(),
 					'vibr_hr': $("input[name='c_vibr_hr']:checked").val(),
 					'vibr_bl': $("input[name='c_vibr_bl']:checked").val(),
-					'vibr_bc': $("input[name='c_vibr_bc']:checked").val()
+					'vibr_bc': $("input[name='c_vibr_bc']:checked").val(),
+					'debug': $("#c_debug").val()
 				}
 				return options;
 			}
