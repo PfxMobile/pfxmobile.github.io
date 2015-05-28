@@ -29,10 +29,22 @@
 						</select>
 					</div>
 					<div class="ui-block-b"> 
+					</div>
+				</fieldset>
+				
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a">
 						<legend>Hourly vibrate: </legend>
 						<select name="vibr" id="vibr" data-background="" data-role="slider">
 							<option value="no" selected="">No</option>
 							<option value="yes">Yes</option>
+						</select>
+					</div>
+					<div class="ui-block-b"> 
+						<legend>BT loss vibrate: </legend>
+						<select name="vibr_bt" id="vibr_bt" data-background="" data-role="slider">
+							<option value="no">No</option>
+							<option value="yes" selected="">Yes</option>
 						</select>
 					</div>
 				</fieldset>
@@ -92,6 +104,7 @@
 				var title = decodeURIComponent($.urlParam("title"));
 				var inv = decodeURIComponent($.urlParam("inv"));
 				var vibr = decodeURIComponent($.urlParam("vibr"));        
+				var vibr_bt = decodeURIComponent($.urlParam("vibr_bt"));        
 				var datefmt = decodeURIComponent($.urlParam("datefmt"));
 				var weather = decodeURIComponent($.urlParam("weather"));
 				var units = decodeURIComponent($.urlParam("units"));
@@ -103,6 +116,8 @@
 					$("#inv").val(inv).slider("refresh");
 				if (vibr)
 					$("#vibr").val(vibr).slider("refresh");
+				if (vibr_bt)
+					$("#vibr_bt").val(vibr_bt).slider("refresh");
 				if (datefmt)
 					$('#datefmt').val(datefmt).selectmenu('refresh');
 				if (weather)
@@ -115,9 +130,9 @@
 			
 			function saveOptions() {
 				var options = {
-					'theme': $("input[name='theme']:checked").val(),
 					'inv': $("#inv").val(),
 					'vibr': $("#vibr").val(),
+					'vibr_bt': $("#vibr_bt").val(),
 					'datefmt': $('#datefmt').val(),
 					'weather': $("#c_weather").val(),
 					'units': $('#c_units').val(),
