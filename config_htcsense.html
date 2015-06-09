@@ -8,17 +8,16 @@
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 		<script src='js/spectrum.min.js'></script> <!-- http://bgrins.github.io/spectrum -->
 		<link rel='stylesheet' href='css/spectrum.min.css' />
+		<style type="text/css">
+			.ui-header .ui-title {margin-right: 1%; margin-left: 1%;}
+		</style>
 		<title>Configuration</title>
 	</head>
 
 	<body>
 		<div data-role="page" name="page1" id="page1">
-			<div data-role="header" data-theme="a" data-position="fixed">
-				<div data-role="navbar"  name="navbar1" id="navbar1" data-iconpos="left">
-					<ul>
-						<li><a href="#" class="ui-btn-active" name="pagetittle" id="pagetittle" data-icon="gear">Configuration</a></li>
-					</ul>
-				</div>
+			<div data-role="header" data-id="header" data-theme="b" data-position="fixed" style="background: #3388cc">
+				<h1>Configuration</h1>
 			</div>		
 			<div data-role="content" style="margin:0 auto;margin-left:auto;margin-right:auto;align:center;text-align:center;">
 				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="false">
@@ -365,7 +364,7 @@
 				var vibr_bc = decodeURIComponent($.urlParam("vibr_bc"));
 				var debug = decodeURIComponent($.urlParam("debug"));
 				
-				$('#pagetittle').find('.ui-btn-text').text(title+' Configuration');
+				$("[data-role='header'] h1").text(title+' Configuration');
 
 				if (ampm)
 					$("#c_ampm").val(ampm).slider("refresh");
