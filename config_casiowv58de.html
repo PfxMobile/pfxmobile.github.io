@@ -6,17 +6,16 @@
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<style type="text/css"> 
+			.ui-header .ui-title {margin-right: 1%; margin-left: 1%;}
+		</style>
 		<title>Configuration</title>
 	</head>
 	
 	<body>
 		<div data-role="page" id="page1">
-			<div data-role="header" data-theme="a" data-position="fixed">
-				<div data-role="navbar"  name="navbar1" id="navbar1" data-iconpos="left">
-					<ul>
-						<li><a href="#" class="ui-btn-active" name="pagetittle" id="pagetittle" data-icon="gear">Configuration</a></li>
-					</ul>
-				</div>
+			<div data-role="header" data-id="header" data-theme="b" data-position="fixed" style="background: #3388cc">
+				<h1>Configuration</h1>
 			</div>		
 			<div data-role="content" style="margin:0 auto;margin-left:auto;margin-right:auto;align:center;text-align:center;">
 				
@@ -110,7 +109,7 @@
 				var units = decodeURIComponent($.urlParam("units"));
 				var cityid = decodeURIComponent($.urlParam("cityid"));
 				
-				$('#pagetittle').find('.ui-btn-text').text(title+' Configuration');
+				$("[data-role='header'] h1").text(title+' Configuration');
 				
 				if (inv)
 					$("#inv").val(inv).slider("refresh");
