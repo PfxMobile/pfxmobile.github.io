@@ -241,11 +241,16 @@
 				if ($("input[name='theme']:checked").val() == 'circle'){
 					$("#fsm").val('no').slider("refresh");
 					$("#fsm").slider('disable');
-					$("#sep").slider('enable');
+					$("#inv").val('no').slider("refresh");
+					$("#inv").slider('disable');
+					$("#sep").val('no').slider("refresh");
+					$("#sep").slider('disable');
 					$('#datefmt').selectmenu('enable');
 					$("#smart").slider('enable');
 				} else { 
 					$("#fsm").slider('enable');
+					$("#inv").slider('enable');
+					$("#sep").slider('enable');
 				}
 			});
 			$("#fsm").change(function() {
