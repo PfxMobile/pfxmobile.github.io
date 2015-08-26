@@ -313,6 +313,11 @@
 							</select>
 						</div>
 						<div class="ui-block-b"> 
+							<legend>High Contrast Mode:</legend>
+							<select name="c_hc_mode" id="c_hc_mode" data-background="" data-role="slider">
+								<option value="0" selected="">No</option>
+								<option value="1">Yes</option>
+							</select>
 						</div>
 					</fieldset>
  				</div>
@@ -363,6 +368,7 @@
 				var vibr_bl = decodeURIComponent($.urlParam("vibr_bl"));
 				var vibr_bc = decodeURIComponent($.urlParam("vibr_bc"));
 				var debug = decodeURIComponent($.urlParam("debug"));
+				var hc_mode = decodeURIComponent($.urlParam("hc_mode"));
 				
 				$("[data-role='header'] h1").text(title+' Configuration');
 
@@ -418,6 +424,8 @@
 				}
 				if (debug)
 					$("#c_debug").val(debug).slider("refresh");
+				if (hc_mode)
+					$("#c_hc_mode").val(hc_mode).slider("refresh");
 
 				//Configure color picks, use Pebble Color Table
 				var ColorArray = [
@@ -525,7 +533,8 @@
 					'vibr_hr': $("input[name='c_vibr_hr']:checked").val(),
 					'vibr_bl': $("input[name='c_vibr_bl']:checked").val(),
 					'vibr_bc': $("input[name='c_vibr_bc']:checked").val(),
-					'debug': $("#c_debug").val()
+					'debug': $("#c_debug").val(),
+					'hc_mode': $("#c_hc_mode").val()
 				}
 				return options;
 			}
