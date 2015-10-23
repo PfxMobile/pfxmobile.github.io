@@ -73,6 +73,22 @@
 							</select>
 						</div>
 					</fieldset>
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a">
+							<legend>Show Week #:</legend>
+							<select name="c_showwn" id="c_showwn" data-background="" data-role="slider">
+								<option value="0">No</option>
+								<option value="1" selected="">Yes</option>
+							</select>
+						</div>
+						<!-- div class="ui-block-b"> 
+							<legend>Show Month, Year:</legend>
+							<select name="c_showmy" id="c_showmy" data-background="" data-role="slider">
+								<option value="0">No</option>
+								<option value="1" selected="">Yes</option>
+							</select>
+						</div -->
+					</fieldset>
 					<fieldset data-role="controlgroup" data-mini="true">
 						<legend>Weeks to Show:</legend>
 						<input type="radio" name="c_preweeks" id="c_preweeks1" value="1" checked="checked">
@@ -127,16 +143,27 @@
 								<option value="60" selected="selected">1 hour</option>
 							</select>
 						</div>
-						<div class="ui-block-b"> 
-						</div>
+						<!--div class="ui-block-b"> 
+							<legend>Data Provider:</legend>
+							<select name="c_provider" id="c_provider" data-mini="true">
+								<option value="owm">openweathermap</option>
+								<option value="yah">yahoo weather</option>
+							</select>
+						</div-->
 					</fieldset>
 					<fieldset class="ui-grid-a">
 						<div class="ui-corner-all custom-corners" data-mini="true">
 							<div class="ui-bar ui-bar-a">
-								<h3>openweathermap.org city ID or zero for auto location</h3>
+								<h3>City ID or zero for auto location</h3>
 							</div>
-							<div class="ui-body ui-body-a">
+							<div class="ui-block-a" style="width:85%"> 
 								<input type="number" data-clear-btn="true" name="c_cityid" pattern="[0-9]*" id="c_cityid" value="0" data-mini="true">
+							</div>
+							<div class="ui-block-b" style="width:15%"> 
+								<!--a href="#overlay" data-rel="popup" data-role="button" data-icon="info" data-mini="true" data-inline="true" data-iconpos="notext" data-position-to="window" data-overlay-theme="a"  data-transition="flow"></a>
+								<div id="overlay" data-role="popup" data-overlay-theme="a" class="ui-content">
+									<p>Both <strong>http://openweathermap.org</strong> as well as <strong>http://weather.yahoo.com</strong> you go to the page and search for your town, the City ID is in each case the number on the far right in the address bar. The ID works only for the appropriate provider.</p>
+								</div-->
 							</div>
 						</div>
 					</fieldset>
@@ -348,6 +375,7 @@
 				var grid = decodeURIComponent($.urlParam("grid"));
 				var invert = decodeURIComponent($.urlParam("invert"));
 				var showmy = decodeURIComponent($.urlParam("showmy"));
+				var showwn = decodeURIComponent($.urlParam("showwn"));
 				var preweeks = decodeURIComponent($.urlParam("preweeks"));
 				var weather = decodeURIComponent($.urlParam("weather"));
 				var units = decodeURIComponent($.urlParam("units"));
@@ -384,6 +412,8 @@
 					$("#c_invert").val(invert).slider("refresh");
 				if (showmy)
 					$("#c_showmy").val(showmy).slider("refresh");
+				if (showwn)
+					$("#c_showwn").val(showwn).slider("refresh");
 				if (preweeks)
 				{
 					$("input[name='c_preweeks'][value='"+preweeks+"']").attr("checked","checked").checkboxradio("refresh");
@@ -514,6 +544,7 @@
 					'grid': $("#c_grid").val(),
 					'invert': $('#c_invert').val(),
 					'showmy': $('#c_showmy').val(),
+					'showwn': $('#c_showwn').val(),
 					'preweeks': $("input[name='c_preweeks']:checked").val(),
 					'weather': $("#c_weather").val(),
 					'units': $('#c_units').val(),
