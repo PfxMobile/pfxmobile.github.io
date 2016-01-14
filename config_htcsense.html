@@ -188,6 +188,10 @@
 							<input type='text' id="c_col_caltx" />
 						</div>
 						<div class="ui-block-b">
+							<legend>Week Number: </legend>
+							<input type='text' id="c_col_calwn" />
+						</div>
+						<div class="ui-block-b">
 							<legend>Calendar HL: </legend>
 							<input type='text' id="c_col_calhl" />
 						</div>
@@ -387,6 +391,7 @@
 				var col_calbg = decodeURIComponent($.urlParam("col_calbg"));
 				var col_calgr = decodeURIComponent($.urlParam("col_calgr"));
 				var col_caltx = decodeURIComponent($.urlParam("col_caltx"));
+				var col_calwn = decodeURIComponent($.urlParam("col_calwn"));
 				var col_calhl = decodeURIComponent($.urlParam("col_calhl"));
 				var col_calmy = decodeURIComponent($.urlParam("col_calmy"));
 				var vibr_all = decodeURIComponent($.urlParam("vibr_all"));
@@ -513,6 +518,17 @@
 					palette: ColorArray
 				});		
 
+				if (!col_calwn)
+					col_calwn = 'AAAAAA';
+				$("#c_col_calwn").spectrum({
+					preferredFormat: "hex",
+					showPaletteOnly: true,
+					showPalette:true,
+					hideAfterPaletteSelect:false,
+					color: col_calwn,
+					palette: ColorArray
+				});
+
 				if (!col_calhl)
 					col_calhl = 'FFFFFF';
 				$("#c_col_calhl").spectrum({
@@ -556,6 +572,7 @@
 					'col_calbg': $("#c_col_calbg").spectrum("get").toHex(),
 					'col_calgr': $("#c_col_calgr").spectrum("get").toHex(),
 					'col_caltx': $("#c_col_caltx").spectrum("get").toHex(),
+					'col_calwn': $("#c_col_calwn").spectrum("get").toHex(),
 					'col_calhl': $("#c_col_calhl").spectrum("get").toHex(),
 					'col_calmy': $("#c_col_calmy").spectrum("get").toHex(),
 					'vibr_all': $("#c_vibr_all").val(),
