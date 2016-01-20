@@ -5,6 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script>$(document).bind('mobileinit',function() { $.mobile.pushStateEnabled = false; });</script> <!-- Chrome Security override -->
     <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
     <title>Configuration</title>
   </head>
@@ -22,15 +23,15 @@
           <div class="ui-block-a">
             <legend>Inverter:<!-- p style="font-size:10pt;font-style:italic;">[Bright space? Really??]</p --></legend>
             <select name="inv" id="inv" data-background="" data-role="slider">
-              <option value="yes">Yes</option>
               <option value="no">No</option>
+              <option value="yes">Yes</option>
             </select>
           </div>
           <div class="ui-block-b"> 
             <legend>Start animation: </legend>
             <select name="anim" id="anim" data-background="" data-role="slider">
-              <option value="yes">Yes</option>
               <option value="no">No</option>
+              <option value="yes">Yes</option>
             </select>
           </div>
         </fieldset>
@@ -39,15 +40,15 @@
           <div class="ui-block-a">
             <legend>Show Stars: </legend>
             <select name="stars" id="stars" data-background="" data-role="slider">
-              <option value="yes">Yes</option>
               <option value="no">No</option>
+              <option value="yes">Yes</option>
             </select>
           </div>
           <div class="ui-block-b">
             <legend>Hourly vibrate: </legend>
             <select name="vibr" id="vibr" data-background="" data-role="slider">
-              <option value="yes">Yes</option>
               <option value="no">No</option>
+              <option value="yes">Yes</option>
             </select>
           </div>
         </fieldset>
@@ -56,15 +57,15 @@
           <div class="ui-block-a">
             <legend>Show Asteorids: </legend>
             <select name="astro" id="astro" data-background="" data-role="slider">
-              <option value="yes">Yes</option>
               <option value="no">No</option>
+              <option value="yes">Yes</option>
             </select>
           </div>
           <div class="ui-block-b">
             <legend>Infinite rotation: </legend>
             <select name="infr" id="infr" data-background="" data-role="slider">
-              <option value="yes">Yes</option>
               <option value="no">No</option>
+              <option value="yes">Yes</option>
             </select>
           </div>
         </fieldset>
