@@ -18,60 +18,95 @@
 			<div data-role="header" data-id="header" data-theme="b" data-position="fixed" style="background: #3388cc">
 				<h1>Configuration</h1>
 			</div>		
+
+			<!-- Attention popup -->
+			<div id="att_popup" data-role="popup" data-dismissible="false" data-overlay-theme="a" class="ui-content">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<fieldset class="ui-grid-b">
+					<div class="ui-block-a">
+						<div class="ui-nodisc-icon">
+							<center><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-alert ui-btn-icon-notext ui-btn-b ui-btn-inline"></a></center>
+						</div>
+					</div>
+					<div class="ui-block-b"> 
+						<center><font color="red"><h3><strong><u>! Attention !</u></strong></h3></font></center>
+					</div>
+					<div class="ui-block-c"> 
+						<div class="ui-nodisc-icon">
+							<center><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-alert ui-btn-icon-notext ui-btn-b ui-btn-inline"></a></center>
+						</div>
+					</div>
+				</fieldset>
+				<center>As the seconds are updated very often it will heavy drain the battery!<br>Just for demonstration purpose!</center>
+			</div>
+			<!-- Attention popup -->
+
 			<div data-role="content" style="margin:0 auto;margin-left:auto;margin-right:auto;align:center;text-align:center;">
-				
 				<fieldset class="ui-grid-a">
 					<div class="ui-block-a">
-						<legend>Inverter: </legend>
+						<legend>Inverter:</legend>
 						<select name="inv" id="inv" data-background="" data-role="slider">
 							<option value="no" selected="">No</option>
 							<option value="yes">Yes</option>
 						</select>
 					</div>
 					<div class="ui-block-b"> 
-						<legend>Show seconds Interval:</legend>
-						<select name="showsec" id="showsec">
-							<option value="all" selected="selected">allways</option>
-							<option value="nev">never</option>
-							<option value="05s">every 5s</option>
-							<option value="10s">every 10s</option>
-							<option value="15s">every 15s</option>
-							<option value="30s">every 30s</option>
+						<legend>Mode auto switch:</legend>
+						<select name="auto_sw" id="auto_sw" data-background="" data-role="slider">
+							<option value="no">No</option>
+							<option value="yes" selected="">Yes</option>
 						</select>
 					</div>
 				</fieldset>
 				
 				<fieldset class="ui-grid-a">
 					<div class="ui-block-a">
-						<legend>Hourly vibrate: </legend>
+						<legend>Hourly vibrate:</legend>
 						<select name="vibr" id="vibr" data-background="" data-role="slider">
 							<option value="no" selected="">No</option>
 							<option value="yes">Yes</option>
 						</select>
 					</div>
 					<div class="ui-block-b"> 
-						<legend>BT loss vibrate: </legend>
+						<legend>BT loss vibrate:</legend>
 						<select name="vibr_bt" id="vibr_bt" data-background="" data-role="slider">
 							<option value="no">No</option>
 							<option value="yes" selected="">Yes</option>
 						</select>
 					</div>
 				</fieldset>
-				
-				<legend>Choose date Format:</legend>
-				<select name="datefmt" id="datefmt">
-					<option value="ger" selected="selected">dd.mm.yyyy</option>
-					<option value="fra">dd-mm-yyyy</option>
-					<option value="eng">dd/mm/yyyy</option>
-					<option value="usa">mm/dd/yyyy</option>
-				</select>
-				
+
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a">
+						<legend>Show seconds Interval:</legend>
+						<select name="showsec" id="showsec">
+							<option value="all" selected="selected">allways</option>
+							<option value="nev">never</option>
+							<option value="smo">smooth (!)</option>
+							<option value="05s">every 5s</option>
+							<option value="10s">every 10s</option>
+							<option value="15s">every 15s</option>
+							<option value="30s">every 30s</option>
+						</select>
+					</div>
+					<div class="ui-block-b"> 
+						<legend>Choose date Format:</legend>
+						<select name="datefmt" id="datefmt">
+							<option value="ger" selected="selected">dd.mm.yyyy</option>
+							<option value="fra">dd-mm-yyyy</option>
+							<option value="eng">dd/mm/yyyy</option>
+							<option value="usa">mm/dd/yyyy</option>
+							<option value="iso">yyyy-mm-dd</option>
+						</select>
+					</div>
+				</fieldset>
+
 				<fieldset class="ui-grid-a">
 					<div class="ui-block-a"> 
-						<legend>Show Weather:</legend>
+						<legend>Show Condition:</legend>
 						<select name="c_weather" id="c_weather" data-background="" data-role="slider">
-							<option value="no">No</option>
-							<option value="yes" selected="">Yes</option>
+							<option value="no" selected="">No</option>
+							<option value="yes">Yes</option>
 						</select>
 					</div>
 					<div class="ui-block-b"> 
@@ -111,25 +146,28 @@
 			
 			function updateControls() {
 				var title = decodeURIComponent($.urlParam("title"));
-				var inv = decodeURIComponent($.urlParam("inv"));
-				var showsec = decodeURIComponent($.urlParam("showsec"));
-				var vibr = decodeURIComponent($.urlParam("vibr"));        
-				var vibr_bt = decodeURIComponent($.urlParam("vibr_bt"));        
-				var datefmt = decodeURIComponent($.urlParam("datefmt"));
-				var weather = decodeURIComponent($.urlParam("weather"));
-				var units = decodeURIComponent($.urlParam("units"));
-				var cityid = decodeURIComponent($.urlParam("cityid"));
+				var inv = decodeURIComponent($.urlParam("c_inv"));
+				var auto_sw = decodeURIComponent($.urlParam("c_auto_sw"));
+				var vibr = decodeURIComponent($.urlParam("c_vibr"));        
+				var vibr_bt = decodeURIComponent($.urlParam("c_vibr_bt"));        
+				var showsec = decodeURIComponent($.urlParam("c_showsec"));
+				var datefmt = decodeURIComponent($.urlParam("c_datefmt"));
+				var weather = decodeURIComponent($.urlParam("c_weather"));
+				var units = decodeURIComponent($.urlParam("c_units"));
+				var cityid = decodeURIComponent($.urlParam("c_cityid"));
 				
 				$("[data-role='header'] h1").text(title+' Configuration');
 				
 				if (inv)
 					$("#inv").val(inv).slider("refresh");
-				if (showsec)
-					$('#showsec').val(showsec).selectmenu('refresh');
+				if (auto_sw)
+					$('#auto_sw').val(auto_sw).slider("refresh");
 				if (vibr)
 					$("#vibr").val(vibr).slider("refresh");
 				if (vibr_bt)
 					$("#vibr_bt").val(vibr_bt).slider("refresh");
+				if (showsec)
+					$('#showsec').val(showsec).selectmenu('refresh');
 				if (datefmt)
 					$('#datefmt').val(datefmt).selectmenu('refresh');
 				if (weather)
@@ -142,14 +180,15 @@
 			
 			function saveOptions() {
 				var options = {
-					'inv': $("#inv").val(),
-					'showsec': $('#showsec').val(),
-					'vibr': $("#vibr").val(),
-					'vibr_bt': $("#vibr_bt").val(),
-					'datefmt': $('#datefmt').val(),
-					'weather': $("#c_weather").val(),
-					'units': $('#c_units').val(),
-					'cityid': $('#c_cityid').val(),
+					'c_inv': $("#inv").val(),
+					'c_auto_sw': $('#auto_sw').val(),
+					'c_vibr': $("#vibr").val(),
+					'c_vibr_bt': $("#vibr_bt").val(),
+					'c_showsec': $('#showsec').val(),
+					'c_datefmt': $('#datefmt').val(),
+					'c_weather': $("#c_weather").val(),
+					'c_units': $('#c_units').val(),
+					'c_cityid': $('#c_cityid').val(),
 				}
 				return options;
 			}
@@ -204,6 +243,14 @@
 			
 			$(function() {
 				$("input[type=radio]").fix_radios();
+
+				//Show Popup on smooth value
+				$('#showsec').bind("change", function(event, ui) {
+					if ($('#showsec').val() == 'smo'){
+						$('#att_popup').popup('open');
+					}
+				});
+
 				/*
 				$("input[name='theme']").change(function(){
 					if ($("input[name='theme']:checked").val() == 'circle'){
