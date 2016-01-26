@@ -44,7 +44,7 @@
 			<!-- Attention popup -->
 
 			<div data-role="content" style="margin:0 auto;margin-left:auto;margin-right:auto;align:center;text-align:center;">
-				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="false">
+				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="false" data-inset="false">
 					<h4>General</h4>
 					<fieldset class="ui-grid-a">
 						<div class="ui-block-a">
@@ -142,7 +142,7 @@
 						</div>
 					</fieldset>
 				</div>
-				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="false">
+				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="false" data-inset="false">
 					<h4>Weather</h4>
 					<fieldset class="ui-grid-a">
 						<div class="ui-block-a"> 
@@ -169,7 +169,7 @@
 						</div>
 					</div>
 				</div>
-				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="false">
+				<div id="col_colaps" name="col_colaps" data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="false" data-inset="false">
 					<h4>Colors (Hint: long press)</h4>
 					<fieldset class="ui-grid-a">
 						<div class="ui-block-a">
@@ -181,13 +181,13 @@
 							<input type='text' id="colbrd" />
 						</div>
 					</fieldset>
-					<div data-role="footer" data-theme="a" data-position="fixed" style="background: #3388cc">
-						<div data-role="navbar" data-mini="false" data-iconpos="left">
-							<ul>
-								<li><button type="submit" data-theme="b" id="b-cancel" data-icon="delete">Cancel</button></li>
-								<li><button type="submit" data-theme="b"  style="background: green" id="b-submit" data-icon="check">Save</button></li>
-							</ul>
-						</div>
+				</div>
+				<div data-role="footer" data-theme="a" data-position="fixed" style="background: #3388cc">
+					<div data-role="navbar" data-mini="false" data-iconpos="left">
+						<ul>
+							<li><button type="submit" data-theme="b" id="b-cancel" data-icon="delete">Cancel</button></li>
+							<li><button type="submit" data-theme="b"  style="background: green" id="b-submit" data-icon="check">Save</button></li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -202,6 +202,7 @@
 			
 			function updateControls() {
 				var title = decodeURIComponent($.urlParam("title"));
+				var colorpbl = decodeURIComponent($.urlParam("colorpbl"));
 				var inv = decodeURIComponent($.urlParam("c_inv"));
 				var auto_sw = decodeURIComponent($.urlParam("c_auto_sw"));
 				var vibr = decodeURIComponent($.urlParam("c_vibr"));        
@@ -237,7 +238,14 @@
 					$("#c_units").val(units).slider("refresh");
 				if (cityid)
 					$("#c_cityid").val(cityid).textinput('refresh');
-					
+				
+				if (colorpbl !== '1')
+				{
+					//http://demos.jquerymobile.com/1.4.5/collapsible-dynamic/
+					$("#col_colaps").collapsible("collapse");
+					$("#col_colaps").collapsible("disable");
+				}
+				
 				//Configure color picks, use Pebble Color Table
 				var ColorArray = [
 					["#000000","#000055","#0000AA","#0000FF","#005500","#005555","#0055AA","#0055FF"],
@@ -258,7 +266,8 @@
 					showPalette:true,
 					hideAfterPaletteSelect:false,
 					color: colsec,
-					palette: ColorArray
+					palette: ColorArray,
+					disabled: colorpbl !== '1'
 				});
 					
 				if (!colbrd)
@@ -269,7 +278,8 @@
 					showPalette:true,
 					hideAfterPaletteSelect:false,
 					color: colbrd,
-					palette: ColorArray
+					palette: ColorArray,
+					disabled: colorpbl !== '1'
 				});
 			}
 			
