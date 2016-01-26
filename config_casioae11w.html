@@ -7,6 +7,8 @@
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script>$(document).bind('mobileinit',function() { $.mobile.pushStateEnabled = false; });</script> <!-- Chrome Security override -->
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src='js/spectrum.min.js'></script> <!-- http://bgrins.github.io/spectrum -->
+		<link rel='stylesheet' href='css/spectrum.min.css' />
 		<style type="text/css"> 
 			.ui-header .ui-title {margin-right: 1%; margin-left: 1%;}
 		</style>
@@ -42,96 +44,150 @@
 			<!-- Attention popup -->
 
 			<div data-role="content" style="margin:0 auto;margin-left:auto;margin-right:auto;align:center;text-align:center;">
-				<fieldset class="ui-grid-a">
-					<div class="ui-block-a">
-						<legend>Inverter:</legend>
-						<select name="inv" id="inv" data-background="" data-role="slider">
-							<option value="no" selected="">No</option>
-							<option value="yes">Yes</option>
-						</select>
-					</div>
-					<div class="ui-block-b"> 
-						<legend>Mode auto switch:</legend>
-						<select name="auto_sw" id="auto_sw" data-background="" data-role="slider">
-							<option value="no">No</option>
-							<option value="yes" selected="">Yes</option>
-						</select>
-					</div>
-				</fieldset>
-				
-				<fieldset class="ui-grid-a">
-					<div class="ui-block-a">
-						<legend>Hourly vibrate:</legend>
-						<select name="vibr" id="vibr" data-background="" data-role="slider">
-							<option value="no" selected="">No</option>
-							<option value="yes">Yes</option>
-						</select>
-					</div>
-					<div class="ui-block-b"> 
-						<legend>BT loss vibrate:</legend>
-						<select name="vibr_bt" id="vibr_bt" data-background="" data-role="slider">
-							<option value="no">No</option>
-							<option value="yes" selected="">Yes</option>
-						</select>
-					</div>
-				</fieldset>
+				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="false">
+					<h4>General</h4>
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a">
+							<legend>Inverter:</legend>
+							<select name="inv" id="inv" data-background="" data-role="slider">
+								<option value="no" selected="">No</option>
+								<option value="yes">Yes</option>
+							</select>
+						</div>
+						<div class="ui-block-b"> 
+						</div>
+					</fieldset>
+					
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a">
+							<legend>Hourly vibrate:</legend>
+							<select name="vibr" id="vibr" data-background="" data-role="slider">
+								<option value="no" selected="">No</option>
+								<option value="yes">Yes</option>
+							</select>
+						</div>
+						<div class="ui-block-b"> 
+							<legend>BT loss vibrate:</legend>
+							<select name="vibr_bt" id="vibr_bt" data-background="" data-role="slider">
+								<option value="no">No</option>
+								<option value="yes" selected="">Yes</option>
+							</select>
+						</div>
+					</fieldset>
 
-				<fieldset class="ui-grid-a">
-					<div class="ui-block-a">
-						<legend>Show seconds Interval:</legend>
-						<select name="showsec" id="showsec">
-							<option value="all" selected="selected">allways</option>
-							<option value="nev">never</option>
-							<option value="smo">smooth (!)</option>
-							<option value="05s">every 5s</option>
-							<option value="10s">every 10s</option>
-							<option value="15s">every 15s</option>
-							<option value="30s">every 30s</option>
-						</select>
-					</div>
-					<div class="ui-block-b"> 
-						<legend>Choose date Format:</legend>
-						<select name="datefmt" id="datefmt">
-							<option value="ger" selected="selected">dd.mm.yyyy</option>
-							<option value="fra">dd-mm-yyyy</option>
-							<option value="eng">dd/mm/yyyy</option>
-							<option value="usa">mm/dd/yyyy</option>
-							<option value="iso">yyyy-mm-dd</option>
-						</select>
-					</div>
-				</fieldset>
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a">
+							<legend>Seconds Interval:</legend>
+							<select name="showsec" id="showsec">
+								<option value="all" selected="selected">always</option>
+								<option value="nev">hide</option>
+								<option value="smo">smooth (!)</option>
+								<option value="05s">every 5s</option>
+								<option value="10s">every 10s</option>
+								<option value="15s">every 15s</option>
+								<option value="30s">every 30s</option>
+							</select>
+						</div>
+						<div class="ui-block-b"> 
+							<legend>Choose date Format:</legend>
+							<select name="datefmt" id="datefmt">
+								<option value="ger" selected="selected">dd.mm.yyyy</option>
+								<option value="fra">dd-mm-yyyy</option>
+								<option value="eng">dd/mm/yyyy</option>
+								<option value="usa">mm/dd/yyyy</option>
+								<option value="iso">yyyy-mm-dd</option>
+							</select>
+						</div>
+					</fieldset>
 
-				<fieldset class="ui-grid-a">
-					<div class="ui-block-a"> 
-						<legend>Show Condition:</legend>
-						<select name="c_weather" id="c_weather" data-background="" data-role="slider">
-							<option value="no" selected="">No</option>
-							<option value="yes">Yes</option>
-						</select>
-					</div>
-					<div class="ui-block-b"> 
-						<legend>Units:</legend>
-						<select name="c_units" id="c_units" data-background="" data-role="slider">
-							<option value="f">°F</option>
-							<option value="c" selected="selected">°C</option>
-						</select>
-					</div>
-				</fieldset>
-				<div class="ui-corner-all custom-corners" data-mini="true">
-					<div class="ui-bar ui-bar-a">
-						<h3>openweathermap.org city ID or zero for auto location</h3>
-					</div>
-					<div class="ui-body ui-body-a">
-						<input type="number" data-clear-btn="true" name="c_cityid" pattern="[0-9]*" id="c_cityid" value="0" data-mini="true">
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a">
+							<legend>Dual time Difference:</legend>
+							<select name="dualdiff" id="dualdiff">
+								<option value="-11">-11</option>
+								<option value="-10">-10</option>
+								<option value="-9">-9</option>
+								<option value="-8">-8</option>
+								<option value="-7">-7</option>
+								<option value="-6">-6</option>
+								<option value="-5">-5</option>
+								<option value="-4">-4</option>
+								<option value="-3">-3</option>
+								<option value="-2">-2</option>
+								<option value="-1">-1</option>
+								<option value="0" selected="selected">0</option>
+								<option value="1">+1</option>
+								<option value="2">+2</option>
+								<option value="3">+3</option>
+								<option value="4">+4</option>
+								<option value="5">+5</option>
+								<option value="6">+6</option>
+								<option value="7">+7</option>
+								<option value="8">+8</option>
+								<option value="9">+9</option>
+								<option value="10">+10</option>
+								<option value="11">+11</option>
+								<option value="12">+12</option>
+							</select>
+						</div>
+						<div class="ui-block-b"> 
+							<legend>Bottom Mode:</legend>
+							<select name="auto_sw" id="auto_sw">
+								<option value="yes" selected="">auto switch</option>
+								<option value="no">motion switch</option>
+								<option value="dual">show dual time</option>
+								<option value="date">show date</option>
+								<option value="wthr">show weather</option>
+							</select>
+						</div>
+					</fieldset>
+				</div>
+				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="false">
+					<h4>Weather</h4>
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a"> 
+							<legend>Show Condition:</legend>
+							<select name="c_weather" id="c_weather" data-background="" data-role="slider">
+								<option value="no" selected="">No</option>
+								<option value="yes">Yes</option>
+							</select>
+						</div>
+						<div class="ui-block-b"> 
+							<legend>Units:</legend>
+							<select name="c_units" id="c_units" data-background="" data-role="slider">
+								<option value="f">°F</option>
+								<option value="c" selected="selected">°C</option>
+							</select>
+						</div>
+					</fieldset>
+					<div class="ui-corner-all custom-corners" data-mini="true">
+						<div class="ui-bar ui-bar-a">
+							<h3>openweathermap.org city ID or zero for auto location</h3>
+						</div>
+						<div class="ui-body ui-body-a">
+							<input type="number" data-clear-btn="true" name="c_cityid" pattern="[0-9]*" id="c_cityid" value="0" data-mini="true">
+						</div>
 					</div>
 				</div>
-				
-				<div data-role="footer" data-theme="a" data-position="fixed" style="background: #3388cc">
-					<div data-role="navbar" data-mini="false" data-iconpos="left">
-						<ul>
-							<li><button type="submit" data-theme="b" id="b-cancel" data-icon="delete">Cancel</button></li>
-							<li><button type="submit" data-theme="b"  style="background: green" id="b-submit" data-icon="check">Save</button></li>
-						</ul>
+				<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-mini="true" data-collapsed="false">
+					<h4>Colors (Hint: long press)</h4>
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a">
+							<legend>Second Hand:</legend>
+							<input type='text' id="colsec" />
+						</div>
+						<div class="ui-block-b">
+							<legend>Border:</legend>
+							<input type='text' id="colbrd" />
+						</div>
+					</fieldset>
+					<div data-role="footer" data-theme="a" data-position="fixed" style="background: #3388cc">
+						<div data-role="navbar" data-mini="false" data-iconpos="left">
+							<ul>
+								<li><button type="submit" data-theme="b" id="b-cancel" data-icon="delete">Cancel</button></li>
+								<li><button type="submit" data-theme="b"  style="background: green" id="b-submit" data-icon="check">Save</button></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -152,9 +208,12 @@
 				var vibr_bt = decodeURIComponent($.urlParam("c_vibr_bt"));        
 				var showsec = decodeURIComponent($.urlParam("c_showsec"));
 				var datefmt = decodeURIComponent($.urlParam("c_datefmt"));
+				var dualdiff = decodeURIComponent($.urlParam("c_dualdiff"));
 				var weather = decodeURIComponent($.urlParam("c_weather"));
 				var units = decodeURIComponent($.urlParam("c_units"));
 				var cityid = decodeURIComponent($.urlParam("c_cityid"));
+				var colsec = decodeURIComponent($.urlParam("c_colsec"));
+				var colbrd = decodeURIComponent($.urlParam("c_colbrd"));
 				
 				$("[data-role='header'] h1").text(title+' Configuration');
 				
@@ -170,12 +229,48 @@
 					$('#showsec').val(showsec).selectmenu('refresh');
 				if (datefmt)
 					$('#datefmt').val(datefmt).selectmenu('refresh');
+				if (dualdiff)
+					$('#dualdiff').val(dualdiff).selectmenu('refresh');
 				if (weather)
 					$("#c_weather").val(weather).slider("refresh");
 				if (units)
 					$("#c_units").val(units).slider("refresh");
 				if (cityid)
 					$("#c_cityid").val(cityid).textinput('refresh');
+					
+				//Configure color picks, use Pebble Color Table
+				var ColorArray = [
+					["#000000","#000055","#0000AA","#0000FF","#005500","#005555","#0055AA","#0055FF"],
+					["#00AA00","#00AA55","#00AAAA","#00AAFF","#00FF00","#00FF55","#00FFAA","#00FFFF"],
+					["#550000","#550055","#5500AA","#5500FF","#555500","#555555","#5555AA","#5555FF"],
+					["#55AA00","#55AA55","#55AAAA","#55AAFF","#55FF00","#55FF55","#55FFAA","#55FFFF"],
+					["#AA0000","#AA0055","#AA00AA","#AA00FF","#AA5500","#AA5555","#AA55AA","#AA55FF"],
+					["#AAAA00","#AAAA55","#AAAAAA","#FFFFFF","#AAAAFF","#AAFF00","#AAFF55","#AAFFAA"],
+					["#AAFFFF","#FF0000","#FF0055","#FF00AA","#FF00FF","#FF5500","#FF5555","#FF55AA"],
+					["#FF55FF","#FFAA00","#FFAA55","#FFAAAA","#FFAAFF","#FFFF00","#FFFF55","#FFFFAA"]
+				];
+
+				if (!colsec)
+					colsec = 'FF0000';
+				$("#colsec").spectrum({
+					preferredFormat: "hex",
+					showPaletteOnly: true,
+					showPalette:true,
+					hideAfterPaletteSelect:false,
+					color: colsec,
+					palette: ColorArray
+				});
+					
+				if (!colbrd)
+					colbrd = '000000';
+				$("#colbrd").spectrum({
+					preferredFormat: "hex",
+					showPaletteOnly: true,
+					showPalette:true,
+					hideAfterPaletteSelect:false,
+					color: colbrd,
+					palette: ColorArray
+				});
 			}
 			
 			function saveOptions() {
@@ -186,9 +281,12 @@
 					'c_vibr_bt': $("#vibr_bt").val(),
 					'c_showsec': $('#showsec').val(),
 					'c_datefmt': $('#datefmt').val(),
+					'c_dualdiff': $('#dualdiff').val(),
 					'c_weather': $("#c_weather").val(),
 					'c_units': $('#c_units').val(),
 					'c_cityid': $('#c_cityid').val(),
+					'c_colsec': $("#colsec").spectrum("get").toHex(),
+					'c_colbrd': $("#colbrd").spectrum("get").toHex(),
 				}
 				return options;
 			}
