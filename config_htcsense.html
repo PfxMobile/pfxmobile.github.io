@@ -76,19 +76,22 @@
 					</fieldset>
 					<fieldset class="ui-grid-a">
 						<div class="ui-block-a">
-							<legend>Show Week #:</legend>
+							<legend>Show Week#:</legend>
 							<select name="c_showwn" id="c_showwn" data-background="" data-role="slider">
 								<option value="0">No</option>
 								<option value="1" selected="">Yes</option>
 							</select>
 						</div>
-						<!-- div class="ui-block-b"> 
-							<legend>Show Month, Year:</legend>
-							<select name="c_showmy" id="c_showmy" data-background="" data-role="slider">
-								<option value="0">No</option>
-								<option value="1" selected="">Yes</option>
+						<div class="ui-block-b"> 
+							<legend>Week# Offset:</legend>
+							<select name="c_wnoffs" id="c_wnoffs" data-mini="true">
+								<option value="-2">-2</option>
+								<option value="-1">-1</option>
+								<option value="0" selected="">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>								
 							</select>
-						</div -->
+						</div>
 					</fieldset>
 					<fieldset data-role="controlgroup" data-mini="true">
 						<legend>Weeks to Show:</legend>
@@ -381,6 +384,7 @@
 				var invert = decodeURIComponent($.urlParam("invert"));
 				var showmy = decodeURIComponent($.urlParam("showmy"));
 				var showwn = decodeURIComponent($.urlParam("showwn"));
+				var wnoffs = decodeURIComponent($.urlParam("wnoffs"));
 				var preweeks = decodeURIComponent($.urlParam("preweeks"));
 				var weather = decodeURIComponent($.urlParam("weather"));
 				var units = decodeURIComponent($.urlParam("units"));
@@ -420,6 +424,8 @@
 					$("#c_showmy").val(showmy).slider("refresh");
 				if (showwn)
 					$("#c_showwn").val(showwn).slider("refresh");
+				if (wnoffs)
+					$("#c_wnoffs").val(wnoffs).selectmenu('refresh');
 				if (preweeks)
 				{
 					$("input[name='c_preweeks'][value='"+preweeks+"']").attr("checked","checked").checkboxradio("refresh");
@@ -562,6 +568,7 @@
 					'invert': $('#c_invert').val(),
 					'showmy': $('#c_showmy').val(),
 					'showwn': $('#c_showwn').val(),
+					'wnoffs': $('#c_wnoffs').val(),
 					'preweeks': $("input[name='c_preweeks']:checked").val(),
 					'weather': $("#c_weather").val(),
 					'units': $('#c_units').val(),
