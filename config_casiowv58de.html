@@ -31,7 +31,7 @@
 					<div class="ui-block-b"> 
 						<legend>Show seconds Interval:</legend>
 						<select name="showsec" id="showsec">
-							<option value="all" selected="selected">allways</option>
+							<option value="all" selected="selected">always</option>
 							<option value="nev">never</option>
 							<option value="05s">every 5s</option>
 							<option value="10s">every 10s</option>
@@ -58,6 +58,31 @@
 					</div>
 				</fieldset>
 				
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a">
+						<legend>Battery Digits: </legend>
+						<select name="battdgt" id="battdgt" data-background="" data-role="slider">
+							<option value="no" selected="">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+					<div class="ui-block-b"> 
+						<legend>Show battery below:</legend>
+						<select name="showbatt" id="showbatt">
+							<option value="100" selected="selected">always</option>
+							<option value="90">90%</option>
+							<option value="80">80%</option>
+							<option value="70">70%</option>
+							<option value="60">60%</option>
+							<option value="50">50%</option>
+							<option value="40">40%</option>
+							<option value="30">30%</option>
+							<option value="20">20%</option>
+							<option value="10">10%</option>
+							<option value="0">never</option>
+						</select>
+					</div>
+				</fieldset>
 				<legend>Choose date Format:</legend>
 				<select name="datefmt" id="datefmt">
 					<option value="ger" selected="selected">dd.mm.yyyy</option>
@@ -113,6 +138,8 @@
 				var title = decodeURIComponent($.urlParam("title"));
 				var inv = decodeURIComponent($.urlParam("inv"));
 				var showsec = decodeURIComponent($.urlParam("showsec"));
+				var battdgt = decodeURIComponent($.urlParam("battdgt"));
+				var showbatt = decodeURIComponent($.urlParam("showbatt"));
 				var vibr = decodeURIComponent($.urlParam("vibr"));        
 				var vibr_bt = decodeURIComponent($.urlParam("vibr_bt"));        
 				var datefmt = decodeURIComponent($.urlParam("datefmt"));
@@ -126,6 +153,10 @@
 					$("#inv").val(inv).slider("refresh");
 				if (showsec)
 					$('#showsec').val(showsec).selectmenu('refresh');
+				if (battdgt)
+					$("#battdgt").val(battdgt).slider("refresh");
+				if (showbatt)
+					$('#showbatt').val(showbatt).selectmenu('refresh');
 				if (vibr)
 					$("#vibr").val(vibr).slider("refresh");
 				if (vibr_bt)
@@ -144,6 +175,8 @@
 				var options = {
 					'inv': $("#inv").val(),
 					'showsec': $('#showsec').val(),
+					'battdgt': $("#battdgt").val(),
+					'showbatt': $('#showbatt').val(),
 					'vibr': $("#vibr").val(),
 					'vibr_bt': $("#vibr_bt").val(),
 					'datefmt': $('#datefmt').val(),
