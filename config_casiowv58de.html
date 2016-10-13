@@ -107,6 +107,24 @@
 						</select>
 					</div>
 				</fieldset>
+
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"> 
+						<legend>Show Condition:</legend>
+						<select name="showcond" id="showcond" data-background="" data-role="slider">
+							<option value="no" selected="">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+					<!--div class="ui-block-b"> 
+						<legend>Units:</legend>
+						<select name="c_units" id="c_units" data-background="" data-role="slider">
+							<option value="f">°F</option>
+							<option value="c" selected="selected">°C</option>
+						</select>
+					</div-->
+				</fieldset>
+				
 				<div class="ui-corner-all custom-corners" data-mini="true">
 					<div class="ui-bar ui-bar-a">
 						<h3>openweathermap.org city ID or zero for auto location</h3>
@@ -144,6 +162,7 @@
 				var vibr_bt = decodeURIComponent($.urlParam("vibr_bt"));        
 				var datefmt = decodeURIComponent($.urlParam("datefmt"));
 				var weather = decodeURIComponent($.urlParam("weather"));
+				var showcond = decodeURIComponent($.urlParam("showcond"));
 				var units = decodeURIComponent($.urlParam("units"));
 				var cityid = decodeURIComponent($.urlParam("cityid"));
 				
@@ -165,6 +184,8 @@
 					$('#datefmt').val(datefmt).selectmenu('refresh');
 				if (weather)
 					$("#c_weather").val(weather).slider("refresh");
+				if (showcond)
+					$("#showcond").val(showcond).slider("refresh");
 				if (units)
 					$("#c_units").val(units).slider("refresh");
 				if (cityid)
@@ -181,6 +202,7 @@
 					'vibr_bt': $("#vibr_bt").val(),
 					'datefmt': $('#datefmt').val(),
 					'weather': $("#c_weather").val(),
+					'showcond': $("#showcond").val(),
 					'units': $('#c_units').val(),
 					'cityid': $('#c_cityid').val(),
 				}
